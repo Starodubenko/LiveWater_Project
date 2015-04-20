@@ -1,0 +1,61 @@
+body {
+    background: url("img/background.jpg");
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: "Times new Roman";
+    font-size: 15px;
+}
+
+.main {
+    width: 1282px;
+    min-height: 800px;
+    margin: 20px auto;
+    /*background-color: #FFE1A5;*/
+}
+
+.clear {
+    clear: both;
+}
+
+
+#back-top {
+    position: fixed;
+    bottom: 30px;
+    margin-left: -75px;
+}
+#back-top a {
+    width: 70px;
+    display: block;
+    text-align: center;
+    font: 11px/100% Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #bbb;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
+}
+#back-top a:hover {
+    color: #000;
+    /*width: 70px;*/
+    /*height: 70px;*/
+}
+#back-top span {
+    width: 70px;
+    height: 70px;
+    display: block;
+    margin-bottom: 7px;
+    background: #ddd url(img/up-arrow.png) no-repeat center center;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
+}
+#back-top a:hover span {
+    background-color: #777;
+}

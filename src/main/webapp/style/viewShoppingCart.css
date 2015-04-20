@@ -1,0 +1,74 @@
+.goods-list {
+    width: 1000px;
+    float: left;
+    margin: 10px 10px;
+    padding: 5px;
+}
+
+.goods-list-edit {
+    width: 1000px;
+    float: left;
+    margin: 20px 10px;
+    padding: 5px;
+}
+
+.good{
+    /*margin: 10px;*/
+    width: 97%;
+    float: left;
+}
+
+.total-sum {
+    text-align: right;
+    margin-right: 100px;
+}
+
+.button-continue-order{
+    float: right;
+}
+
+.goods-icon{
+    width: 70px;
+    height: 90px;
+    float: left;
+    margin: 10px;
+}
+
+.icon{
+    height: 100%;
+    width: 100%;
+}
+
+.goods-count{
+    width: 60px;
+    /*height: 70px;*/
+    float: left;
+    margin: 40px 10px;
+}
+
+.goods-name{
+    width: 500px;
+    /*height: 70px;*/
+    float: left;
+    margin: 40px 10px;
+}
+
+.goods-del-button{
+    margin: 40px 10px;
+    /*width: 10px;*/
+    /*height: 10px;*/
+    position: relative;
+    bottom: 50%;
+    top: 50%;
+    float: left;
+}
+
+.goods-font {
+    font-size: 20px;
+}
+
+.goods-price{
+    float: left;
+    /*height: 70px;*/
+    margin: 40px 10px;
+}

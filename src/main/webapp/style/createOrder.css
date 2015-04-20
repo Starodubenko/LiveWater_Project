@@ -1,0 +1,72 @@
+.total-sum{
+    float: right;
+    font-size: 20px;
+    margin: 10px 20px;
+}
+
+.old-cost{
+    text-decoration:line-through;
+}
+
+.payment-option {
+    margin: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+.create-order-panel {
+    width: 500px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.orderText {
+    width: 40%;
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.orderInfo {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.ordered-goods{
+    width: 100%;
+}
+
+.cell-middle{
+    margin-top: 100%;
+}
+
+.datepicker {
+
+}
+
+.datetimepicker {
+
+}
+
+.timepicker {
+
+}
+
+.table>tbody>tr>td{
+    padding: 0 8px;
+    vertical-align: middle;
+}
+
+textarea{
+    max-width: 100%;
+}

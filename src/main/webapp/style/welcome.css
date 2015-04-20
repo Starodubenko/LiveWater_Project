@@ -1,0 +1,22 @@
+.banner {
+    margin: 10px auto;
+    width: 600px;
+    height: 400px;
+}
+
+.image-link-blocks{
+    margin-left: 150px;
+    padding: 10px;
+}
+
+.image-link-block{
+    margin: 20px;
+    height: 300px;
+    width: 300px;
+    float: left;
+}
+
+.image-link{
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,94 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    
+    <display-name>LiveWater</display-name>
+
+    <!--<welcome-file-list>-->
+        <!--<welcome-file>welcome.jsp</welcome-file>-->
+    <!--</welcome-file-list>-->
+
+    <!--<servlet>-->
+        <!--<servlet-name>controller</servlet-name>-->
+        <!--<servlet-class>com.epam.star.servlet.Controller</servlet-class>-->
+        <!--<multipart-config>-->
+            <!--&lt;!&ndash;<location>upload</location>&ndash;&gt;-->
+            <!--<max-file-size>100000000</max-file-size>-->
+            <!--<max-request-size>200000000</max-request-size>-->
+            <!--<file-size-threshold>500000000</file-size-threshold>-->
+        <!--</multipart-config>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>controller</servlet-name>-->
+        <!--<url-pattern>/do/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <!--<servlet>-->
+        <!--<servlet-name>ImageServlet</servlet-name>-->
+        <!--<servlet-class>com.epam.star.servlet.ImageServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>ImageServlet</servlet-name>-->
+        <!--<url-pattern>/image/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <!--<servlet>-->
+        <!--<servlet-name>ErrorHandler</servlet-name>-->
+        <!--<servlet-class>com.epam.star.servlet.ErrorHandler</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>ErrorHandler</servlet-name>-->
+        <!--<url-pattern>/error</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <error-page>
+        <location>/error</location>
+    </error-page>
+
+    <!--<filter>-->
+        <!--<filter-name>Encoding</filter-name>-->
+        <!--<filter-class>com.epam.star.filter.Encoding</filter-class>-->
+    <!--</filter>-->
+
+    <!--<filter-mapping>-->
+        <!--<filter-name>Encoding</filter-name>-->
+        <!--<url-pattern>/do/*</url-pattern>-->
+        <!--<servlet-name>controller</servlet-name>-->
+    <!--</filter-mapping>-->
+
+    <!--<filter>-->
+        <!--<filter-name>CacheFilter</filter-name>-->
+        <!--<filter-class>com.epam.star.filter.CacheFilter</filter-class>-->
+    <!--</filter>-->
+
+    <!--<filter-mapping>-->
+        <!--<filter-name>CacheFilter</filter-name>-->
+        <!--<url-pattern>/do/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+    <!--<filter>-->
+        <!--<filter-name>UrlFilter</filter-name>-->
+        <!--<filter-class>com.epam.star.filter.UrlFilter</filter-class>-->
+    <!--</filter>-->
+
+    <!--<filter-mapping>-->
+        <!--<filter-name>UrlFilter</filter-name>-->
+        <!--<url-pattern>/do/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+    <!--<filter>-->
+        <!--<filter-name>CacheControl</filter-name>-->
+        <!--<filter-class>com.epam.star.filter.imageFilter</filter-class>-->
+    <!--</filter>-->
+
+    <!--<filter-mapping>-->
+        <!--<filter-name>CacheControl</filter-name>-->
+        <!--<url-pattern>/image/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+    <listener>
+        <listener-class>com.epam.star.listener.SessionListener</listener-class>
+    </listener>
+</web-app>

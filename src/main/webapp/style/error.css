@@ -1,0 +1,37 @@
+.code-error{
+    font-family: 'Lobster', cursive;
+    color: darkred;
+    text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+    text-align: center;
+    margin: 30px auto;
+    font-size: 30px;
+}
+
+.text-error{
+    font-family: 'Lobster', cursive;
+    color: #293a8b;
+    text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;
+    text-align: center;
+    margin: 30px auto;
+    font-size: 30px;
+}
+
+.error-block{
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    margin: auto;
+}
+
+.center-text{
+
+}
+

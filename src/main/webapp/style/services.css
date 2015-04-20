@@ -1,0 +1,84 @@
+.services-header{
+    margin: 20px auto;
+    font-family: 'Lobster', cursive;
+    color: #0575B7;
+    text-shadow:
+    -1px -1px 0 #000000,
+    1px -1px 0 #000000,
+    -1px 1px 0 #000000,
+    1px 1px 0 #000000;
+    text-align: center;
+    margin: 30px auto;
+}
+
+.above-table-row {
+    width: 100%;
+    height: 34px;
+    margin-bottom: 40px;
+}
+
+.above-table-row-content{
+    height: 30px;
+    float: left;
+}
+
+.rows-count{
+    float: right;
+    margin-right: 30px;
+    width: 400px;
+}
+
+.services-content{
+    font-size: 25px;
+    margin: 20px;
+    text-align: center;
+}
+
+.goods{
+    margin: 10px;
+    padding: 5px;
+}
+
+.goods-block {
+    margin: 5px;
+    padding: 3px;
+    width: 295px;
+    height: 400px;
+    float: left;
+}
+
+.goods-image{
+    height: 86%;
+    width: 100%;
+    margin-bottom: 3px;
+}
+
+.goods-describe{
+    margin: 0 0 5px;
+}
+
+.goods-price{
+    float: left;
+}
+
+.goods-block > button{
+    float: right;
+}
+
+.disabledd {
+    pointer-events: none;
+    cursor: default;
+}
+
+.go-to-cart{
+    background-color: #FF7A00;
+    color: #FFFFFF;
+}
+
+.adding-button{
+
+}
+
+.clear {
+    clear: both;
+}

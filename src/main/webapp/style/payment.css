@@ -1,0 +1,27 @@
+.eWalet {
+    margin: 10px;
+    width: 200px;
+    float: right;
+}
+
+.client-info{
+    width: 200px;
+    float: right;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.input-field {
+    width: 200px;
+    margin-top: 2px;
+}
+
+.topup{
+    width: 100%;
+    height: 25px;
+    padding: 0;
+}

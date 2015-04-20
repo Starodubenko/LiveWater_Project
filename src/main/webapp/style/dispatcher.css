@@ -1,0 +1,124 @@
+.orderText {
+    width: 40%;
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.orderListHeight {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.orderList {
+    border-color: #6FBBDB;
+    margin: 10px 10px 10px 10px;
+}
+
+.above-table-row {
+    width: 100%;
+    height: 34px;
+    margin-bottom: 40px;
+}
+
+.above-table-row-content{
+    height: 30px;
+    float: left;
+}
+
+.rows-count{
+    float: right;
+    margin-right: 30px;
+    width: 400px;
+}
+
+#search-form {
+    margin-top: 200px;
+}
+
+.edit-panel {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.edit-panel-heading {
+    background-color: #428BCA;
+    text-decoration-color: #428BCA;
+    color: #428BCA;
+    outline-color: #428BCA;
+    text-emphasis-color: #428BCA;
+}
+
+.panel-body-input {
+
+}
+
+.under-orders-table-row-content {
+    float: left;
+    margin: 0 10px;
+}
+.under-orders-table-row{
+    height: 35px;
+}
+
+.switcher {
+    margin: 20px 10px;
+    width: 150px;
+    height: 30px;
+    float: right;
+}
+
+.datepicker {
+    z-index:1151 !important;
+}
+
+.datepickerNotBlocked {
+    z-index:1151 !important;
+}
+
+.disabledd {
+    pointer-events: none;
+    cursor: default;
+}
+
+.table>tbody>tr>td{
+    padding: 0 8px;
+    vertical-align: middle;
+}
+
+.goods-table{
+    width: 300px;
+    height: 400px;
+    float: left;
+    margin-left: 10px;
+}
+
+.ordered-goods{
+    width: 500px;
+    height: 400px;
+    float: left;
+    margin-right: 10px;
+}
+
+.ra-button{
+    float: left;
+    width: 25px;
+    height: 25px;
+}
+
+.ra-button-block{
+    width: 26px;
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.remove{
+    margin-top: 5px;
+}
+
+.add{
+    margin-top: 200px;
+}
+

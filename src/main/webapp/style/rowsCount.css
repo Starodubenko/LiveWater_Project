@@ -1,0 +1,21 @@
+.rows-count-block{
+    height: 34px;
+    width: 400px;
+    margin: 20px 0;
+}
+
+.count-field{
+    width: 30px;
+}
+
+.labelCount {
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.textCount {
+    float: left;
+    height: 30px;
+    width: 50px;
+}

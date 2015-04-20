@@ -1,0 +1,336 @@
+.clear {
+    clear: both;
+}
+
+.contactInformation {
+    width: 200px;
+    height: 300px;
+    background-color: aliceblue;
+    /*float: left;*/
+    margin-left: 10px;
+    margin-top: 250px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-color: #6FBBDB;
+}
+
+.border {
+    margin: 5px;
+    padding: 0px;
+    border: solid;
+    border-width: 1px;
+    border-color: #6FBBDB;
+}
+
+.orderList {
+    border-color: #6FBBDB;
+    float: right;
+    margin: 10px 10px 10px 10px;
+}
+
+.right_top_area {
+    width: 200px;
+    float: right;
+}
+
+.createOrderButton {
+    float: right;
+    width: 50%;
+}
+
+.cancelOrderButton {
+    float: left;
+    width: 50%;
+}
+
+.paymentType {
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.paymentTypeContent {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.orderText {
+    width: 40%;
+    float: left;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.orderListHeight {
+    height: 74%;
+    width: 99%;
+    /*margin-left: 30px;*/
+}
+
+.datepicker {
+    z-index: 1151 !important;
+}
+
+.datetimepicker {
+    z-index: 1151 !important;
+}
+
+.client-avatar {
+    padding: 5px;
+    margin: 10px;
+    float: left;
+    width: 300px;
+    min-height: 150px;
+}
+
+.avatar{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+}
+
+.orders {
+    margin: 10px;
+}
+
+.image-block-buttons {
+    margin: 0px;
+    text-align: center;
+}
+
+.edit-fields{
+    float: left;
+    margin: 10px;
+    min-height: 100px;
+    width: 700px;
+    padding-bottom: 20px;
+}
+
+.edit-field-block-button{
+    float: left;
+    margin-left: 210px;
+}
+
+.edit-field-block{
+    margin: 10px 10px 10px 0;
+    width: 300px;
+}
+
+.edit-block{
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+.block-title{
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    color: #0575B7;
+}
+
+/* Cначала обозначаем стили для IE8 и более старых версий
+т.е. здесь мы немного облагораживаем стандартный чекбокс. */
+.checkbox {
+    vertical-align: top;
+    margin: 0 3px 0 0;
+    width: 17px;
+    height: 17px;
+}
+/* Это для всех браузеров, кроме совсем старых, которые не поддерживают
+селекторы с плюсом. Показываем, что label кликабелен. */
+.checkbox + label {
+    cursor: pointer;
+}
+
+/* Далее идет оформление чекбокса в современных браузерах, а также IE9 и выше.
+Благодаря тому, что старые браузеры не поддерживают селекторы :not и :checked,
+в них все нижеследующие стили не сработают. */
+
+/* Прячем оригинальный чекбокс. */
+.checkbox:not(checked) {
+    position: absolute;
+    opacity: 0;
+}
+.checkbox:not(checked) + label {
+    position: relative; /* будем позиционировать псевдочекбокс относительно label */
+    padding: 0 0 0 60px; /* оставляем слева от label место под псевдочекбокс */
+}
+/* Оформление первой части чекбокса в выключенном состоянии (фон). */
+.checkbox:not(checked) + label:before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 50px;
+    height: 26px;
+    border-radius: 13px;
+    background: #CDD1DA;
+    box-shadow: inset 0 2px 3px rgba(0,0,0,.2);
+}
+/* Оформление второй части чекбокса в выключенном состоянии (переключатель). */
+.checkbox:not(checked) + label:after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0 2px 5px rgba(0,0,0,.3);
+    transition: all .2s; /* анимация, чтобы чекбокс переключался плавно */
+}
+/* Меняем фон чекбокса, когда он включен. */
+.checkbox:checked + label:before {
+    background: #428bca;
+}
+/* Сдвигаем переключатель чекбокса, когда он включен. */
+.checkbox:checked + label:after {
+    left: 26px;
+}
+/* Показываем получение фокуса. */
+.checkbox:focus + label:before {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.50);
+}
+
+.checkbox-label{
+    margin: 20px;
+}
+
+.error-message{
+    color: red;
+}
+
+.success-message{
+    color: green;
+}
+
+.image-block{
+    width: 285px;
+    height: 350px;
+}
+
+#image-form img {
+    -moz-transition: all 0.1s ease-out;
+    -o-transition: all 0.1s ease-out;
+    -webkit-transition: all 0.1s ease-out;
+}
+
+#image-form img:hover{
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    cursor: hand;
+}
+
+#image-form img:active{
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -o-transform: scale(0.9);
+}
+
+
+#goods-form img {
+    -moz-transition: all 0.1s ease-out;
+    -o-transition: all 0.1s ease-out;
+    -webkit-transition: all 0.1s ease-out;
+}
+
+#goods-form img:hover{
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    cursor: hand;
+}
+
+#goods-form img:active{
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -o-transform: scale(0.9);
+}
+
+
+.order-function-button{
+    width: 30px;
+    height: 30px;
+    padding: 0
+}
+
+.order-function-button img{
+    width: 100%;
+    height: 100%;
+}
+
+.order-successful-message{
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 300px;
+    height: 80px;
+    margin: 10px;
+    padding: 10px;
+    overflow: hidden;
+    border: 1px solid;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    font: normal 16px/1 "Times New Roman", Times, serif;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    background: -webkit-linear-gradient(-90deg, rgba(208,228,247,1) 0, rgb(105, 181, 217) 15%, rgb(67, 140, 202) 30%, rgb(67, 140, 202) 70%, rgb(105, 181, 217) 85%, rgba(135,188,234,1) 100%), #0199d9;
+    background: -moz-linear-gradient(180deg, rgba(208,228,247,1) 0, rgb(105, 181, 217) 15%, rgb(67, 140, 202) 30%, rgb(67, 140, 202) 70%, rgb(105, 181, 217) 85%, rgba(135,188,234,1) 100%), #0199d9;
+    background: linear-gradient(180deg, rgba(208,228,247,1) 0, rgb(105, 181, 217) 15%, rgb(67, 140, 202) 30%, rgb(67, 140, 202) 70%, rgba(83,159,225,1) 85%, rgba(135,188,234,1) 100%), #0199d9;
+    background-position: 50% 50%;
+    -webkit-background-origin: padding-box;
+    background-origin: padding-box;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-background-size: auto auto;
+    background-size: auto auto;
+    -webkit-box-shadow: 2px 0 60px 0 rgba(67, 140, 202, 0.70);
+    box-shadow: 2px 0 60px 0 rgba(67, 140, 202, 0.70);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.20);
+    float: left;
+    position: relative;
+    left: 200px;
+}
+
+.order-successful-message > div{
+    margin: 10px;
+    color: #ffffff;
+}
+
+.order-successful-message > button{
+    margin: 5px;
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    cursor: pointer;
+    padding: 3px 6px;
+    border: none;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    font: normal 16px/normal "Times New Roman", Times, serif;
+    color: rgba(0, 0, 0, 0.90);
+    -o-text-overflow: clip;
+    text-overflow: clip;
+    background: -webkit-linear-gradient(-90deg, rgba(183,222,237,1) 0, rgba(113,206,239,1) 50%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%), rgba(1,153,217,0.7);
+    background: -moz-linear-gradient(180deg, rgba(183,222,237,1) 0, rgba(113,206,239,1) 50%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%), rgba(1,153,217,0.7);
+    background: linear-gradient(180deg, rgba(183,222,237,1) 0, rgba(113,206,239,1) 50%, rgba(33,180,226,1) 51%, rgba(183,222,237,1) 100%), rgba(1,153,217,0.7);
+    background-position: 50% 50%;
+    -webkit-background-origin: padding-box;
+    background-origin: padding-box;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-background-size: auto auto;
+    background-size: auto auto;
+    -webkit-box-shadow: 2px 0 30px 7px rgba(0,0,0,0.2) ;
+    box-shadow: 2px 0 30px 7px rgba(0,0,0,0.2) ;
+    text-shadow: -1px -1px 0 rgba(15,73,168,0.66) ;
+    -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+    transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}

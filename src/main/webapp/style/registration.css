@@ -1,0 +1,48 @@
+.border{
+    /*width: 400px;*/
+    padding: 30px;
+    margin-left: 420px;
+}
+
+.regex-describe{
+    float: right;
+    width: 570px;
+    padding: 20px;
+    margin: 55px;
+}
+
+.color-tooltip + .tooltip > .tooltip-inner {
+    font-size: 15px;
+}
+
+.input{
+    width: 200px;
+    float: left;
+}
+
+.field-description{
+    float: left;
+    width: 150px;
+    margin-top: 8px;
+}
+
+.necessary-mark{
+    float: left;
+    color: red
+}
+
+.error-message{
+    color: red
+}
+
+.input-block{
+    width: 360px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    min-height: 32px;
+}
+
+.reg-button{
+    text-align: right;
+    padding-right: 10px;
+}
