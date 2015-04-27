@@ -46,7 +46,7 @@ public class ShowServicesPageAction implements Action {
             }
         }
 
-        request.setAttribute("goodsPaginatedList", goods);
+        request.setAttribute("paginatedList", goods);
 
         daoManager.closeConnection();
 

@@ -4,6 +4,6 @@
 
 <fmt:bundle basename="i18n.messages">
     <option value=""><fmt:message key="message.no"/></option>
-    <option value="goods_name"><fmt:message key="message.case.name"/></option>
-    <option value="price"><fmt:message key="message.price"/></option>
+    <option value="goods_name"><fmt:message key="message.goods.name"/></option>
+    <option value="price"><fmt:message key="goods.message.price"/></option>
 </fmt:bundle>

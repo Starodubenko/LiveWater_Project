@@ -59,34 +59,6 @@
             </div>
         </div>
         <div class="clear"></div>
-
-        <%--<div class="panel panel-default log">--%>
-        <%--<div class="center"><label>Log</label></div>--%>
-        <%--<div class="log-report-content panel panel-default">--%>
-
-        <%--</div>--%>
-        <%--<div class="buttons input-daterange input-group" id="datepickerLog">--%>
-        <%--<input type="text" class="input-sm form-control" name="start"/>--%>
-        <%--<span class="input-group-addon">to</span>--%>
-        <%--<input type="text" class="input-sm form-control" name="end"/>--%>
-        <%--</div>--%>
-        <%--<button class="btn btn-default buttons">Searche</button>--%>
-        <%--</div>--%>
-        <%--<div class="panel panel-default report">--%>
-        <%--<div class="center"><label>Report</label></div>--%>
-        <%--<div class="log-report-content panel panel-default">--%>
-
-        <%--</div>--%>
-        <%--<div class="buttons input-daterange input-group" id="datepickerReport">--%>
-        <%--<input type="text" class="input-sm form-control" name="start"/>--%>
-        <%--<span class="input-group-addon">to</span>--%>
-        <%--<input type="text" class="input-sm form-control" name="end"/>--%>
-        <%--</div>--%>
-        <%--<button class="btn btn-default buttons">Searche</button>--%>
-        <%--</div>--%>
-
-
-        <div class="clear"></div>
     </t:gbody>
 
 

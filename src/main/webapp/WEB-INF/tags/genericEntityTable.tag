@@ -22,6 +22,14 @@
 
 <fmt:bundle basename="i18n.messages">
     <c:choose>
+        <c:when test="${paginatedList.getTotalRowsCount() > 0 and entityName eq 'goodsS'}">
+            <c:choose>
+                <c:when test="${paginatedList.getTotalRowsCount() > 0}">
+                    <tGoods:goods goods="${paginatedList}"/>
+                </c:when>
+            </c:choose>
+        </c:when>
+
         <c:when test="${paginatedList.getTotalRowsCount() > 0 and entityName eq 'clientD'}">
             <tClientD:clientTable paginatedList="${paginatedList}"/>
         </c:when>

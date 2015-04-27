@@ -21,6 +21,10 @@
 
 <fmt:bundle basename="i18n.messages">
     <c:choose>
+        <c:when test="${entityName eq 'goodsS'}">
+            <tGoods:goodsFilterForClient/>
+        </c:when>
+
         <c:when test="${entityName eq 'clientD'}">
             <tClientD:clientFilter/>
         </c:when>

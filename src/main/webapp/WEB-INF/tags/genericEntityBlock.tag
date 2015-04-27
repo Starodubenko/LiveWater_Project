@@ -20,8 +20,6 @@
 <%@ attribute name="entityName" type="java.lang.String" %>
 <fmt:setLocale value="${locale}"/>
 
-<c:set var="whatCount" value="client.count"/>
-
 <fmt:bundle basename="i18n.messages">
     <div id="entityBlock">
 
@@ -39,14 +37,23 @@
             </ul>
 
             <div class="above-table-row-content rows-count">
-                <t:rowsCount pageName="admin" targetRowsCount="${paginatedList.getRowsPerPage()}" whatCount="${entityName.toLowerCase().substring(0,entityName.length()-1)}.count"/>
+                <t:rowsCount pageName="admin" targetRowsCount="${paginatedList.getRowsPerPage()}"
+                             whatCount="${entityName.toLowerCase().substring(0,entityName.length()-1)}.count"/>
             </div>
             <div class="clear"></div>
         </div>
 
         <div class="entitiesList tab-pane" style="overflow-y: scroll">
             <c:choose>
-                <c:when test="${paginatedList.getTotalRowsCount() > 0 and entityName eq 'clientD'}">
+                <c:when test="${paginatedList.getTotalRowsCount() > 0 and entityName eq 'goodsS'}"> <!--Services-->
+                    <c:choose>
+                        <c:when test="${paginatedList.getTotalRowsCount() > 0}">
+                            <tGoods:goods goods="${paginatedList}"/>
+                        </c:when>
+                    </c:choose>
+                </c:when>
+
+                <c:when test="${paginatedList.getTotalRowsCount() > 0 and entityName eq 'clientD'}"> <!--Dispatcher-->
                     <tClientD:clientTable paginatedList="${paginatedList}"/>
                 </c:when>
                 <c:when test="${paginatedList.getTotalRowsCount() > 0 and entityName eq 'order2D'}">
@@ -59,7 +66,7 @@
                 </c:when>
 
 
-                <c:when test="${paginatedList.getTotalRowsCount() > 0 and entityName eq 'clientA'}">
+                <c:when test="${paginatedList.getTotalRowsCount() > 0 and entityName eq 'clientA'}"> <!--Admin-->
                     <tClient:clientTable paginatedList="${paginatedList}"/>
                 </c:when>
                 <c:when test="${paginatedList.getTotalRowsCount() > 0 and entityName eq 'employeeA'}">

@@ -1,6 +1,3 @@
-//$(function () {
-//    $("li.gNumbered[value=" + 1 + "]").addClass("active");
-//});
 
 var page;
 var rows;
@@ -13,12 +10,6 @@ function getAdditionalParameters() {
     page = $('#pageNumber').val();
     rows = $('.rowsCount').parents('form').children().children('input').val();
     filterForm = $('#filterForm').serialize();
-
-    //var by = $('#orderBy')[0];
-    //var type = $('#orderByType')[0];
-    //if (by.options[by.selectedIndex].value != "")
-    //    orderBy = by.options[by.selectedIndex].value + " " +type.options[type.selectedIndex].value;
-    //else orderBy = "";
 }
 
 function backNext() {

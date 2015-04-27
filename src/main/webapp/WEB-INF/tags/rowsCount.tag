@@ -12,13 +12,10 @@
 
     <div class="form-group rows-count-block">
         <label class="labelCount" for="${target}rows"><fmt:message key="message.${whatCount}"/></label>
-        <%--<label class="labelCount" for="${target}rows"><fmt:message key="message.rows.count"/></label>--%>
-        <%--<form class="rows-count-form" action="${pageContext.request.contextPath}/do/${pageName}">--%>
         <form class="rows-count-form" onsubmit="return null;">
             <div class="input-group">
                 <input type="text" name="${target}rows" id="${target}rows" value="${targetRowsCount}" class="form-control count-field" maxlength="6">
                         <span class="input-group-btn">
-                            <%--<button class="btn btn-default" type="submit"><fmt:message key="button.apply"/></button>--%>
                             <button class="btn btn-default rowsCount" type="button"><fmt:message key="button.apply"/></button>
                         </span>
             </div>
