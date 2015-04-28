@@ -19,7 +19,7 @@
         <div class="panel panel-default border client-avatar">
 
             <form id="image-form" method="post" enctype="multipart/form-data">
-                <img class="image-block panel panel-default" src="/image/${userAvatar.getId()}/${userAvatar.getFilename()}">
+                <img class="image-block panel panel-default" src="<c:url value="/image/${userAvatar.getId()}/${userAvatar.getFilename()}"/>">
                 <input class="image" type="file" name="image" style="display: none;">
 
                 <div class="image-block-buttons">

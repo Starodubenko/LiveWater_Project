@@ -17,7 +17,7 @@
     <t:gbody>
         <%--<div class="panel panel-default goods">--%>
             <%--<tGoods:goodsShowcase goodsPaginatedList="${goodsPaginatedList}"/>--%>
-        <%--</div>--%>
+        <%--</div>--%>\
 
 
         <div class="panel panel-default dataBase">

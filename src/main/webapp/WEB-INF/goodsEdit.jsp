@@ -26,7 +26,7 @@
                             <img class="image-block panel panel-default" src="/style/img/no_photo.png">
                         </c:when>
                         <c:otherwise>
-                            <img class="image-block panel panel-default" src="/image/${goodsImage.getId()}/${goodsImage.getFilename()}">
+                            <img class="image-block panel panel-default" src="<c:url value="/image/${goodsImage.getId()}/${goodsImage.getFilename()}"/>">
                         </c:otherwise>
                     </c:choose>
                     <input class="image" type="file" name="goodsImageFileName" style="display: none;">
@@ -46,6 +46,20 @@
 
                         <p class="text-center error-message" id="passwordInput"></p>
                     </div>
+            </div>
+            <div class="panel panel-default border edit-fields">
+                <div class="edit-block edit-field-block" id="goodsnameDiv">
+                    <label class="field" for="goodsname"><fmt:message key="goods.message.goods.name"/></label>
+                    <input id="goodsname" name="goodsname" type="text" class="form-control edit-field" value="<c:if test="${not empty editGoods}">${editGoods.getGoodsName()}</c:if>"/>
+
+                    <p class="text-center error-message" id="goodsnameInput"></p>
+                </div>
+                <div class="edit-block edit-field-block" id="priceDiv">
+                    <label class="field" for="price"><fmt:message key="goods.message.price"/></label>
+                    <input id="price" name="price" type="text" class="form-control edit-field" value="<c:if test="${not empty editGoods}">${editGoods.getPrice()}</c:if>"/>
+
+                    <p class="text-center error-message" id="passwordInput"></p>
+                </div>
             </div>
             <div class="edit-field-block-button">
                 <c:if test="${purpose eq 'update'}">

@@ -19,7 +19,7 @@
         <div class="panel panel-default border client-avatar">
             <div class="image-block">
                 <img class="avatar panel panel-default"
-                     src="/LiveWater/image/${clientAvatar.getId()}/${clientAvatar.getFilename()}">
+                     src="<c:url value="/image/${clientAvatar.getId()}/${clientAvatar.getFilename()}"/>">
             </div>
 
             <a href="<c:url value="/do/editProfile"/>"><fmt:message key="client.edit.profile"/></a>

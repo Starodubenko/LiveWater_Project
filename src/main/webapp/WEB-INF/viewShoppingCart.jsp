@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="goods-icon text-center panel panel-default">
-                            <img class="icon" src="/LiveWater/image/${entry.key.image.id}/${entry.key.image.filename}"/>
+                            <img class="icon" src="<c:url value="/image/${entry.key.image.id}/${entry.key.image.filename}"/>"/>
                         </div>
 
                         <div class="goods-name form-group text-center">

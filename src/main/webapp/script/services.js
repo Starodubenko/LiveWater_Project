@@ -38,7 +38,7 @@ $(function(){
 
 $(document).ready(function () {
 
-    $("#Goods").on('click', '.adding-button', function () {
+    $(".dataBase").on('click', '.adding-button', function () {
 
         var button = $(this);
 
@@ -62,7 +62,7 @@ $(document).ready(function () {
             })
     });
 
-    $("#Goods").on('click', '.go-to-cart', function () {
+    $(".dataBase").on('click', '.go-to-cart', function () {
         location.href = "shoppingCart";
     });
 

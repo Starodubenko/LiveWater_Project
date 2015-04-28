@@ -12,7 +12,7 @@
                 </td>
                 <td>
                     <div class="image-block">
-                        <img class="image panel panel-default" src="/image/${entity.getId()}/${entity.getFilename()}">
+                        <img class="image panel panel-default" src="<c:url value="/image/${entity.getId()}/${entity.getFilename()}"/>">
                     </div>
                 </td>
                 <td>

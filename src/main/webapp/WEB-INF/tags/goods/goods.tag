@@ -6,11 +6,8 @@
 <fmt:bundle basename="i18n.messages">
     <input type="hidden" id="pageNumber" value="${goods.getPageNumber()}"/>
     <c:forEach var="good" items="${goods}">
-        <%--<form class="panel panel-default goods-block" action="<c:url value="/do/addGoods"/>" method="post">--%>
         <form class="panel panel-default goods-block" onsubmit="return false;">
-                <%--<img class="goods-image" src="/image/${good.getImage().getFilename()}"/>--%>
-            <%--<img class="goods-image" src="/image/${good.getImage().getId()}/${good.getImage().getFilename()}"/>--%>
-            <img class="goods-image" src="/LiveWater/image/${good.getImage().getId()}/${good.getImage().getFilename()}"/>
+            <a href="<c:url value="/do/about-goods?id=${good.getId()}"/>"><img class="goods-image" src="<c:url value="/image/${good.getImage().getId()}/${good.getImage().getFilename()}"/>"/></a>
 
             <div class="goods-describe">
                     ${good.getGoodsName()}

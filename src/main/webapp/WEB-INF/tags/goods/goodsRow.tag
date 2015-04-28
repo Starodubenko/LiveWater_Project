@@ -13,7 +13,7 @@
                 <td>
                     <div class="image-block">
                         <%--<img class="image panel panel-default" src="/image/${entity.getImage().getId()}/${entity.getImage().getFilename()}">--%>
-                        <img class="image panel panel-default" src="/Delivery/image/${entity.getImage().getId()}/${entity.getImage().getFilename()}">
+                        <img class="image panel panel-default" src="<c:url value="/image/${entity.getImage().getId()}/${entity.getImage().getFilename()}"/>">
                     </div>
                     <label class="field" for="image${entity.getId()}">${entity.getImage().getFilename()}</label>
                     <input id="image${entity.getId()}" name="image" type="text" class="form-control edit-field" style="display: none;" value="${entity.getImage().getFilename()}"/>
