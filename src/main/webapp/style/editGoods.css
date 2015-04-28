@@ -1,0 +1,57 @@
+.edit-fields {
+    float: left;
+    margin: 10px;
+    min-height: 100px;
+    width: 700px;
+    padding-bottom: 20px;
+}
+.border {
+    margin: 5px;
+    padding: 0px;
+    border: solid;
+    border-width: 1px;
+    border-color: #6FBBDB;
+}
+#goods-form img {
+    -moz-transition: all 0.1s ease-out;
+    -o-transition: all 0.1s ease-out;
+    -webkit-transition: all 0.1s ease-out;
+}
+.image-block {
+    width: 285px;
+    height: 350px;
+}
+.client-avatar {
+    padding: 5px;
+    margin: 10px;
+    float: left;
+    width: 300px;
+    min-height: 150px;
+}
+.edit-field-block {
+    margin: 10px 10px 10px 0;
+    width: 300px;
+}
+
+.edit-block {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+}
+
+.edit-field-block-button {
+    float: left;
+    margin-left: 210px;
+}
+
+.checkbox{
+    margin: 10px;
+}
+
+.checkbox label{
+    margin: 10px;
+}
