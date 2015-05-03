@@ -56,21 +56,21 @@
                 <c:if test="${entity.getStatus().getStatusName() eq 'waiting'}">
                     <td rowspan="${entity.getGoodsCount()+1}">
                         <button type="button" class="order-function-button accept" name="id" value="${entity.getId()}" title="<fmt:message key="button.accept.order"/>">
-                            <img src="/style/img/buttons/accept.jpg"/>
+                            <img src="<c:url value="/style/img/buttons/accept.jpg"/>"/>
                         </button>
                     </td>
                 </c:if>
                 <c:if test="${entity.getStatus().getStatusName() eq 'active'}">
                     <td rowspan="${entity.getGoodsCount()+1}">
                         <button type="button" class="order-function-button cancelA" name="id" value="${entity.getId()}" title="<fmt:message key="button.cancel.order"/>">
-                            <img src="/style/img/buttons/cancel.jpg"/>
+                            <img src="<c:url value="/style/img/buttons/cancel.jpg"/>"/>
                         </button>
                     </td>
                 </c:if>
                 <c:if test="${entity.getStatus().getStatusName() eq 'canceled'}">
                     <td rowspan="${entity.getGoodsCount()+1}">
                         <button type="button" class="order-function-button restore" name="id" value="${entity.getId()}" title="<fmt:message key="button.restore.order"/>">
-                            <img src="/style/img/buttons/restore.jpg"/>
+                            <img src="<c:url value="/style/img/buttons/restore.jpg"/>"/>
                         </button>
                     </td>
                 </c:if>

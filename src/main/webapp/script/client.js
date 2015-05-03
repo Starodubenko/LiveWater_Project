@@ -105,8 +105,8 @@ $('.order-successful-message > button').click(function () {
 
 $('#browse-orders').click(function () {
     if ($('#browse-orders').closest('#accordion').children('div').children('.collapse').hasClass('in'))
-        $(this).children('img').prop('src', "/style/img/plus.png");
-    else $(this).children('img').prop('src', "/style/img/minus.png");
+        $(this).children('img').prop('src', "/LiveWater/style/img/plus.png");
+    else $(this).children('img').prop('src', "/LiveWater/style/img/minus.png");
 });
 
 
