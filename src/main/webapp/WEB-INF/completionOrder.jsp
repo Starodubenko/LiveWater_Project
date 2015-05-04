@@ -55,8 +55,13 @@
                             <th><fmt:message key="orders.message.goods.cost"/></th>
                         </tr>
                         <c:forEach var="entry" items="${shoppingCart.getGoods()}">
-                            <tShoppingCart:good-simple entry="${entry}"
-                                                       discount="${user.getDiscount().getPercentage()}"/>
+                            <%--<tShoppingCart:good-simple entry="${entry}" discount="${user.getDiscount().getPercentage()}"/>--%>
+                            <tr>
+                                <td>${entry.key.goodsName}</td>
+                                <td>${entry.value}</td>
+                                <td>${entry.key.price * entry.value}</td>
+                                <td>${entry.key.price * entry.value * (1 - user.getDiscount().getPercentage() / 100)}</td>
+                            </tr>
                         </c:forEach>
                     </table>
                 </div>
