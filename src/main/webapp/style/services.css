@@ -82,3 +82,7 @@
 .clear {
     clear: both;
 }
+
+.hidden-block{
+    display: none;
+}

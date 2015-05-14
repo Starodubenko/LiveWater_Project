@@ -50,24 +50,6 @@ public abstract class AbstractH2Dao<T extends AbstractEntity, E extends Abstract
         this.conn = conn;
     }
 
-//    public PaginatedList<T> findRange(int firstRow, int rowsCount, int pageNumber, E genericDao, String searchString) {
-//
-//        PaginatedList<T> result = new PaginatedList<>();
-//        SearchResult searchResult = SEARCHER.find(searchString, genericDao, rowsCount, firstRow);
-//        Map<Integer, Integer> foundEntitiesProbabilityMap = searchResult.getFoundEntitiesMap();
-//
-//        for (Integer id : foundEntitiesProbabilityMap.keySet()) {
-//            AbstractEntity entity = genericDao.findById(id.intValue());
-//            result.add((T) entity);
-//        }
-//
-//        result.setTotalRowsCount(searchResult.getTotalFoundEntitiesCount());
-//        result.setPageNumber(pageNumber);
-//        result.setRowsPerPage(rowsCount);
-//
-//        return result;
-//    }
-
     public PaginatedList<T> findRangee(int pageNumber, int rowsCount, Map<String, String> fields, String entityName, String orderBy) {
         PaginatedList<T> result = new PaginatedList<>();
 

@@ -31,14 +31,14 @@
                 </div>
             </div>
 
-            <div class="table-name form-group" style="{display: none;}">
+            <div class="table-name form-group hidden-block">
                 <select class="form-control" name="entityName" id="entityName" class="form-control">
                         <option value="goodsS" selected></option>
                 </select>
             </div>
 
             <div class="order-by-block">
-                <label style="float: left; margin-top: 5px">Сортировать |</label>
+                <label style="float: left; margin-top: 5px"><fmt:message key="message.sortBy"/> |</label>
                 <div class="order-by-select">
                     <div class="input-group-btn">
                         <select class="form-control" name="orderBy" id="orderBy">

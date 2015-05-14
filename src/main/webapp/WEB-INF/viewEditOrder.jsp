@@ -19,7 +19,35 @@
         <div class="goods-list-edit panel panel-default">
             <div class="goods">
                 <c:forEach var="entry" items="${editOrder.getGoods()}">
-                    <tShoppingCart:good entry="${entry}"/>
+                    <%--<tShoppingCart:good entry="${entry}"/>--%>
+                    <form class="good goods-font panel panel-default" action="<c:url value="/do/delete-goods"/>">
+                        <div class="goods-del-button">
+                            <input type="hidden" name="id" value="${entry.key.id}">
+                            <a class="del">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                        </div>
+
+                        <div class="goods-icon text-center panel panel-default">
+                            <img class="icon" src="<c:url value="/image/${entry.key.image.id}/${entry.key.image.filename}"/>"/>
+                        </div>
+
+                        <div class="goods-name form-group text-center">
+                                ${entry.key.goodsName}
+                        </div>
+
+                        <div class="goods-price form-group text-center">
+                                ${entry.key.price}  x
+                        </div>
+
+                        <div class="goods-count form-group text-center">
+                            <input type="text" name="goods-count" class="form-control GoodsCount" maxlength="4" value="${entry.value}">
+                        </div>
+
+                        <div class="goods-price text-center" id="${entry.key.id}">
+                                ${entry.key.price * entry.value}
+                        </div>
+                    </form>
                 </c:forEach>
             </div>
                 <div class="clear"></div>
