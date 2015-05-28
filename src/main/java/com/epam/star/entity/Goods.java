@@ -1,6 +1,7 @@
 package com.epam.star.entity;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @MappedEntityForAdmin("Goods")
 public class Goods extends AbstractEntity {
@@ -8,7 +9,16 @@ public class Goods extends AbstractEntity {
     private Image image;
     private String goodsName;
     private BigDecimal price;
+    private List<GoodsCharacteristic> characteristics;
     private boolean inCart;
+
+    public List<GoodsCharacteristic> getCharacteristics() {
+        return characteristics;
+    }
+
+    public void setCharacteristics(List<GoodsCharacteristic> characteristics) {
+        this.characteristics = characteristics;
+    }
 
     public boolean isInCart() {
         return inCart;
