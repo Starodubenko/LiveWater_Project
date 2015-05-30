@@ -118,35 +118,35 @@ public class H2ArticleDao extends AbstractH2Dao implements ArticleDao {
         return status;
     }
 
-    @Override
-    public String getFindByParameters(Boolean needAditionalColumns) {
-        return null;
-    }
-
-    @Override
-    public String getFindByParametersWithoutColumns() {
-        return null;
-    }
-
-    @Override
-    public String getNecessaryColumns() {
-        return null;
-    }
-
-    @Override
-    public String getAdditionalColumns() {
-        return null;
-    }
-
-    @Override
-    public String getIdField() {
-        return null;
-    }
-
-    @Override
-    public String getOrderBy() {
-        return null;
-    }
+//    @Override
+//    public String getFindByParameters(Boolean needAditionalColumns) {
+//        return null;
+//    }
+//
+//    @Override
+//    public String getFindByParametersWithoutColumns() {
+//        return null;
+//    }
+//
+//    @Override
+//    public String getNecessaryColumns() {
+//        return null;
+//    }
+//
+//    @Override
+//    public String getAdditionalColumns() {
+//        return null;
+//    }
+//
+//    @Override
+//    public String getIdField() {
+//        return null;
+//    }
+//
+//    @Override
+//    public String getOrderBy() {
+//        return null;
+//    }
 
     @Override
     public Article getEntityFromResultSet(ResultSet resultSet) throws DaoException, UnsupportedEncodingException {

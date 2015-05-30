@@ -199,45 +199,45 @@ public class H2DiscountDao extends AbstractH2Dao implements DiscountDao {
         return discounts;
     }
 
-    @Override
-    public String getFindByParameters(Boolean needAditionalColumns) {
-
-        String columns = NECESSARY_COLUMNS;
-
-        if (needAditionalColumns == true){
-            columns = columns + ADDITIONAL_COLUMNS;
-        }
-
-        String result = String.format(FIND_BY_PARAMETERS_WITHOUT_COLUMNS,columns);
-
-        result = String.format(result+"%s", ORDER_BY);
-        result = String.format(result+"%s", LIMIT_OFFSET);
-
-        return result;
-    }
-
-    @Override
-    public String getFindByParametersWithoutColumns() {
-        return FIND_BY_PARAMETERS_WITHOUT_COLUMNS;
-    }
-
-    @Override
-    public String getNecessaryColumns() {
-        return NECESSARY_COLUMNS;
-    }
-
-    @Override
-    public String getAdditionalColumns() {
-        return ADDITIONAL_COLUMNS;
-    }
-
-    @Override
-    public String getIdField() {
-        return ID_FIELD;
-    }
-
-    @Override
-    public String getOrderBy() {
-        return ORDER_BY;
-    }
+//    @Override
+//    public String getFindByParameters(Boolean needAditionalColumns) {
+//
+//        String columns = NECESSARY_COLUMNS;
+//
+//        if (needAditionalColumns == true){
+//            columns = columns + ADDITIONAL_COLUMNS;
+//        }
+//
+//        String result = String.format(FIND_BY_PARAMETERS_WITHOUT_COLUMNS,columns);
+//
+//        result = String.format(result+"%s", ORDER_BY);
+//        result = String.format(result+"%s", LIMIT_OFFSET);
+//
+//        return result;
+//    }
+//
+//    @Override
+//    public String getFindByParametersWithoutColumns() {
+//        return FIND_BY_PARAMETERS_WITHOUT_COLUMNS;
+//    }
+//
+//    @Override
+//    public String getNecessaryColumns() {
+//        return NECESSARY_COLUMNS;
+//    }
+//
+//    @Override
+//    public String getAdditionalColumns() {
+//        return ADDITIONAL_COLUMNS;
+//    }
+//
+//    @Override
+//    public String getIdField() {
+//        return ID_FIELD;
+//    }
+//
+//    @Override
+//    public String getOrderBy() {
+//        return ORDER_BY;
+//    }
 }

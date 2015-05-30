@@ -193,17 +193,17 @@ public abstract class AbstractH2Dao<T extends AbstractEntity, E extends Abstract
 
     public abstract T findById(int i);
 
-    public abstract String getFindByParameters(Boolean needAditionalColumns);
-
-    public abstract String getFindByParametersWithoutColumns();
-
-    public abstract String getNecessaryColumns();
-
-    public abstract String getAdditionalColumns();
-
-    public abstract String getIdField();
-
-    public abstract String getOrderBy();
+//    public abstract String getFindByParameters(Boolean needAditionalColumns);
+//
+//    public abstract String getFindByParametersWithoutColumns();
+//
+//    public abstract String getNecessaryColumns();
+//
+//    public abstract String getAdditionalColumns();
+//
+//    public abstract String getIdField();
+//
+//    public abstract String getOrderBy();
 
     public String getLimitOffset() {
         return LIMIT_OFFSET;

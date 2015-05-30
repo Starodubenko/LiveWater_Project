@@ -124,6 +124,14 @@ public class DaoManager implements AutoCloseable {
         return new H2ArticleDao(connection,this);
     }
 
+    public H2GoodsCharacteristicsDao getGoodsCharacteristicDao() {
+        return new H2GoodsCharacteristicsDao(connection,this);
+    }
+
+    public H2CharacteristicDao getCharacteristicDao() {
+        return new H2CharacteristicDao(connection,this);
+    }
+
     @Override
     public void close() throws Exception {
         try {

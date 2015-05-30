@@ -3,8 +3,8 @@ package com.epam.star.entity;
 public class GoodsCharacteristic extends AbstractEntity {
 
     private Goods goods;
-    private String characteristicName;
-    private String caracteristicValue;
+    private Characteristic characteristic;
+    private String caracteristicDescription;
 
     public Goods getGoods() {
         return goods;
@@ -14,19 +14,19 @@ public class GoodsCharacteristic extends AbstractEntity {
         this.goods = goods;
     }
 
-    public String getCharacteristicName() {
-        return characteristicName;
+    public Characteristic getCharacteristic() {
+        return characteristic;
     }
 
-    public void setCharacteristicName(String characteristicName) {
-        this.characteristicName = characteristicName;
+    public void setCharacteristic(Characteristic characteristic) {
+        this.characteristic = characteristic;
     }
 
-    public String getCaracteristicValue() {
-        return caracteristicValue;
+    public String getCaracteristicDescription() {
+        return caracteristicDescription;
     }
 
-    public void setCaracteristicValue(String caracteristicValue) {
-        this.caracteristicValue = caracteristicValue;
+    public void setCaracteristicDescription(String caracteristicDescription) {
+        this.caracteristicDescription = caracteristicDescription;
     }
 }
