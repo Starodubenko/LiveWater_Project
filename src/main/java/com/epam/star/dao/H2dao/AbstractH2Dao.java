@@ -50,7 +50,7 @@ public abstract class AbstractH2Dao<T extends AbstractEntity, E extends Abstract
         this.conn = conn;
     }
 
-    public PaginatedList<T> findRangee(int pageNumber, int rowsCount, Map<String, String> fields, String entityName, String orderBy) {
+    public PaginatedList<T> findRange(int pageNumber, int rowsCount, Map<String, String> fields, String entityName, String orderBy) {
         PaginatedList<T> result = new PaginatedList<>();
 
         String filterFields = getFilterRow(fields, getTableName());

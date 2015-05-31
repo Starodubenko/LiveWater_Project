@@ -7,6 +7,7 @@ import com.epam.star.action.MappedAction;
 import com.epam.star.dao.H2dao.DaoFactory;
 import com.epam.star.dao.H2dao.DaoManager;
 import com.epam.star.dao.H2dao.H2GoodsDao;
+import com.epam.star.entity.Goods;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +29,9 @@ public class GoToAboutGoods implements Action {
         Integer id = Integer.valueOf(request.getParameter("id"));
 
         assert id != null;
-        request.setAttribute("goods", goodsDao.findById(id));
+        Goods goods = goodsDao.findById(id);
+        goods.setCharacteristics(goodsDao.getGoodsCharacteristics(goods.getId()));
+        request.setAttribute("goods", goods);
 
         daoManager.closeConnection();
         return aboutGoods;

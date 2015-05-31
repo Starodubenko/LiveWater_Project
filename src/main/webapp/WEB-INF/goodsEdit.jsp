@@ -53,12 +53,18 @@
                 </div>
             </div>
             <div class="panel panel-default border edit-fields">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> Can't check this
-                    </label>
-                    <input id="" name="price" type="text" class="form-control edit-field"/>
-                </div>
+                <c:forEach items="${characteristics}" var="characteristic">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> ${characteristic.getCharacteristicName()}
+                        </label>
+                        <input id="${characteristic.getId()}" name="Char${characteristic.getCharacteristicName()}" type="text"
+                               class="form-control edit-field"
+                                <c:if test="${not empty editGoods.haveCharacteristic(characteristic.getCharacteristicName())}">
+                                    value="${editGoods.haveCharacteristic(characteristic.getCharacteristicName()).getCaracteristicDescription()}"
+                                </c:if>/>
+                    </div>
+                </c:forEach>
             </div>
             <div class="edit-field-block-button">
                 <c:if test="${purpose eq 'update'}">

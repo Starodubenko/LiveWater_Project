@@ -56,6 +56,24 @@ public class H2CharacteristicDao extends AbstractH2Dao implements Characterictic
     }
 
     @Override
+    public Characteristic findByName(String name) {
+        String sql = "SELECT * FROM CHARACTERISTICS WHERE CHARACTERISTIC_NAME = '" + name + "'";
+        Characteristic characteristic = null;
+        try (PreparedStatement prstm = conn.prepareStatement(sql)) {
+            try (ResultSet resultSet = prstm.executeQuery()) {
+                if (resultSet.next()) {
+                    characteristic = getEntityFromResultSet(resultSet);
+                }
+            }
+            LOGGER.info("Characteristic found by ID successfully{}", characteristic);
+        } catch (Exception e) {
+            LOGGER.error("Error of Characteristic finding by ID{}", e);
+            throw new DaoException(e);
+        }
+        return characteristic;
+    }
+
+    @Override
     public Characteristic insert(Characteristic entity) {
         try (PreparedStatement prstm = conn.prepareStatement(ADD_CHARACTERISTIC)){
             prstm.setString(1, null);

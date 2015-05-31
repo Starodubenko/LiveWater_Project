@@ -43,7 +43,7 @@ public class ChangeEntityAction implements Action {
 
             Dao dao = daoManager.getDao(entityName);
             Pagination pagination = new Pagination();
-            PaginatedList entities = pagination.paginationEntityy(request, dao, fieldsValueMap);
+            PaginatedList entities = pagination.paginationEntity(request, dao, fieldsValueMap);
 
             Map<String, List> entitysNames = GetRefFieldOptions.getByEntityName(daoManager, entityName);
 

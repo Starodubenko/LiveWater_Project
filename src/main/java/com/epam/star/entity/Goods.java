@@ -76,4 +76,11 @@ public class Goods extends AbstractEntity {
         result = 31 * result + (inCart ? 1 : 0);
         return result;
     }
+
+    public GoodsCharacteristic haveCharacteristic(String name){
+        for (GoodsCharacteristic characteristic : characteristics) {
+            if (characteristic.getCharacteristic().getCharacteristicName().equals(name)) return characteristic;
+        }
+        return null;
+    }
 }

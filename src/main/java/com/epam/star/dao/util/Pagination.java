@@ -28,24 +28,7 @@ public class Pagination<T extends AbstractEntity, E extends AbstractH2Dao, K ext
         DEFAULT_ROWS_COUNT = jdbcProperties.getIntProperty("default.rows.count");
     }
 
-//    public PaginatedList<T> paginationEntity(HttpServletRequest request, E genericDao, String targetName) throws DaoException {
-//
-//        int rowsCount = DEFAULT_ROWS_COUNT;
-//        int pageNumber = DEFAULT_PAGE_NUMBER;
-//
-//        if (utilDao.getIntValue(targetName + "page", request) != null)
-//            pageNumber = utilDao.getIntValue(targetName + "page", request);
-//        if (utilDao.getIntValue(targetName + "rows", request) != null)
-//            rowsCount = utilDao.getIntValue(targetName + "rows", request);
-//        int firstRow = pageNumber * rowsCount - rowsCount;
-//
-//        String orderStatus = request.getParameter("orderStatus");
-//
-//        String searchString = utilDao.getString("searchString", request);
-//        return  genericDao.findRange(firstRow, rowsCount, pageNumber, genericDao, searchString);
-//    }
-
-    public PaginatedList<T> paginationEntityy(HttpServletRequest request, K genericDao, Map<String, String> fields) throws DaoException {
+    public PaginatedList<T> paginationEntity(HttpServletRequest request, K genericDao, Map<String, String> fields) throws DaoException {
 
         int rowsCount = DEFAULT_ROWS_COUNT;
         int pageNumber = DEFAULT_PAGE_NUMBER;
@@ -63,6 +46,6 @@ public class Pagination<T extends AbstractEntity, E extends AbstractH2Dao, K ext
             rowsCount = utilDao.getIntValue("rows", request);
 
 
-        return  genericDao.findRangee(pageNumber, rowsCount, fields, "", orderBy);
+        return  genericDao.findRange(pageNumber, rowsCount, fields, "", orderBy);
     }
 }

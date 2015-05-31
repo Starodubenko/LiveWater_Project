@@ -18,10 +18,10 @@
             <img src="<c:url value="/image/${goods.getImage().getId()}/${goods.getImage().getFilename()}"/>"/>
         </div>
         <div class="info panel panel-default">
-            <c:forEach begin="1" end="10" >
+            <c:forEach items="${goods.getCharacteristics()}" var="characteristic">
                 <div class="goods-characteristic">
-                    <label>Характеристика</label>
-                    <div class="panel panel-default">Описание</div>
+                    <label>${characteristic.getCharacteristic().getCharacteristicName()}</label>
+                    <div class="panel panel-default">${characteristic.getCaracteristicDescription()}</div>
                 </div>
             </c:forEach>
         </div>

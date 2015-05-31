@@ -19,7 +19,7 @@ public interface Dao<T extends AbstractEntity> {
 
     public List<T> findAll();
 
-    public PaginatedList<T> findRangee(int pageNumber, int rowsCount, Map<String,String> fields, String entityName, String orderBy);
+    public PaginatedList<T> findRange(int pageNumber, int rowsCount, Map<String, String> fields, String entityName, String orderBy);
 
     void setConn(Connection connection);
     void setDaoManager(com.epam.star.dao.H2dao.DaoManager daoManager);

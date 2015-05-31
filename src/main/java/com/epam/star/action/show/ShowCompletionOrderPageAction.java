@@ -40,7 +40,7 @@ public class ShowCompletionOrderPageAction implements Action {
 
         Client user = (Client)request.getSession().getAttribute("user");
         Pagination pagination = new Pagination();
-        PaginatedList<Order2> orders = pagination.paginationEntityy(request, orderDao2, null);
+        PaginatedList<Order2> orders = pagination.paginationEntity(request, orderDao2, null);
 
         List<Period> periods = daoManager.getPeriodDao().getAllPeriods();
         request.setAttribute("periods", periods);

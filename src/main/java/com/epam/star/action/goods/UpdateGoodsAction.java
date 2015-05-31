@@ -4,16 +4,18 @@ import com.epam.star.action.Action;
 import com.epam.star.action.ActionException;
 import com.epam.star.action.ActionResult;
 import com.epam.star.action.MappedAction;
-import com.epam.star.dao.H2dao.DaoFactory;
-import com.epam.star.dao.H2dao.DaoManager;
-import com.epam.star.dao.H2dao.H2GoodsDao;
+import com.epam.star.dao.H2dao.*;
 import com.epam.star.dao.util.EntityFromParameters.GetEntityUpdate;
 import com.epam.star.entity.Goods;
+import com.epam.star.entity.GoodsCharacteristic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @MappedAction("POST/updateGoods")
 public class UpdateGoodsAction implements Action {
@@ -30,6 +32,8 @@ public class UpdateGoodsAction implements Action {
 
         Goods entity = goodsDao.findById(Integer.valueOf(request.getParameter("id")));
         Goods newEntity = (Goods) entityForUpdate.getByEntityName(request, daoManager, "goods", entity);
+        newEntity.setCharacteristics(getCharacteristicsFromView(request,daoManager));
+
         if (entity == null) LOGGER.info("Goods for update is null, {}", entity);
 
         if (newEntity != null) {
@@ -48,5 +52,25 @@ public class UpdateGoodsAction implements Action {
             }
         }
         return message;
+    }
+
+    private List<GoodsCharacteristic> getCharacteristicsFromView(HttpServletRequest request, DaoManager daoManager){
+        List<GoodsCharacteristic> characteristics = new ArrayList<>();
+
+        H2CharacteristicDao characteristicDao = daoManager.getCharacteristicDao();
+        H2GoodsCharacteristicsDao goodsCharacteristicDao = daoManager.getGoodsCharacteristicDao();
+
+        Map<String, String[]> parameterMap = request.getParameterMap();
+
+        for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
+            if (entry.getKey().contains("Char")){
+                GoodsCharacteristic goodsCharacteristic = new GoodsCharacteristic();
+                goodsCharacteristic.setCharacteristic(characteristicDao.findByName(entry.getKey().substring(entry.getKey().indexOf("Char")+4)));
+                goodsCharacteristic.setCaracteristicDescription(entry.getValue()[0]);
+                characteristics.add(goodsCharacteristic);
+            }
+        }
+
+        return null;
     }
 }

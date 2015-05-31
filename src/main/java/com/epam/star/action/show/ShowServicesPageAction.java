@@ -32,7 +32,7 @@ public class ShowServicesPageAction implements Action {
         H2GoodsDao goodsDao = daoManager.getGoodsDao();
         Pagination pagination = new Pagination();
 
-        PaginatedList<Goods> goods = pagination.paginationEntityy(request, goodsDao, null);
+        PaginatedList<Goods> goods = pagination.paginationEntity(request, goodsDao, null);
         Cart shoppingCart = (Cart) request.getSession().getAttribute("shoppingCart");
         if (shoppingCart == null){
             shoppingCart = new Order2();

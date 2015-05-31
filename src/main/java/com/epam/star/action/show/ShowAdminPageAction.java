@@ -36,7 +36,7 @@ public class ShowAdminPageAction implements Action {
             Dao dao = daoManager.getDao(entityName);
 
             Pagination pagination = new Pagination();
-            PaginatedList paginatedList = pagination.paginationEntityy(request, dao, null);
+            PaginatedList paginatedList = pagination.paginationEntity(request, dao, null);
 
             request.setAttribute("paginatedList", paginatedList);
             request.setAttribute("entityName", entityName);

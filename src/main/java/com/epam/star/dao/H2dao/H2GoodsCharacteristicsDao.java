@@ -122,14 +122,14 @@ public class H2GoodsCharacteristicsDao extends AbstractH2Dao implements GoodsCha
         GoodsCharacteristic goodsCharacteristic = new GoodsCharacteristic();
 
         try {
-            Characteristic charactericticById = characteristicDao.findById(resultSet.getInt("characterictic_id"));
+            Characteristic charactericticById = characteristicDao.findById(resultSet.getInt("characteristic_id"));
             Goods goodsById = goodsDao.findById(resultSet.getInt("goods_id"));
 
             goodsCharacteristic.setId(resultSet.getInt("id"));
             goodsCharacteristic.setCaracteristicDescription(UTIL_DAO.getString(resultSet.getString("description")));
             goodsCharacteristic.setCharacteristic(charactericticById);
             goodsCharacteristic.setGoods(goodsById);
-            goodsCharacteristic.setDeleted(resultSet.getBoolean("deleted"));
+//            goodsCharacteristic.setDeleted(resultSet.getBoolean("deleted"));
             LOGGER.info("GoodsCharacteristic created from result set successfully{}", goodsCharacteristic);
         } catch (Exception e) {
             LOGGER.error("Error of GoodsCharacteristic creating from result set{}", e);
@@ -139,8 +139,25 @@ public class H2GoodsCharacteristicsDao extends AbstractH2Dao implements GoodsCha
     }
 
     @Override
-    public List findAll() {
+    public List<GoodsCharacteristic> findAll() {
         String sql = "SELECT * FROM GOODS_CHARACTERISTICS";
+        List<GoodsCharacteristic> goodsCharacteristics = new ArrayList<>();
+        try (PreparedStatement prstm = conn.prepareStatement(sql)){
+            try(ResultSet resultSet = prstm.executeQuery()){
+                while (resultSet.next())
+                    goodsCharacteristics.add(getEntityFromResultSet(resultSet));
+            }
+            LOGGER.info("All goodsCharacteristics found successfully{}", goodsCharacteristics);
+        } catch (Exception e) {
+            LOGGER.error("Error of goodsCharacteristics finding", e);
+            throw new DaoException(e);
+        }
+        return goodsCharacteristics;
+    }
+
+    @Override
+    public List<GoodsCharacteristic> findByGoodsId(int goodsId) {
+        String sql = "SELECT * FROM GOODS_CHARACTERISTICS WHERE GOODS_ID = "+ goodsId;
         List<GoodsCharacteristic> goodsCharacteristics = new ArrayList<>();
         try (PreparedStatement prstm = conn.prepareStatement(sql)){
             try(ResultSet resultSet = prstm.executeQuery()){

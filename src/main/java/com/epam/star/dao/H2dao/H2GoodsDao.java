@@ -3,6 +3,7 @@ package com.epam.star.dao.H2dao;
 import com.epam.star.dao.GoodsDao;
 import com.epam.star.dao.MappedDao;
 import com.epam.star.entity.Goods;
+import com.epam.star.entity.GoodsCharacteristic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,8 +61,11 @@ public class H2GoodsDao extends AbstractH2Dao implements GoodsDao {
 
         try (PreparedStatement prstm = conn.prepareStatement(sql)){
             try(ResultSet resultSet = prstm.executeQuery()){
-                while (resultSet.next())
-                    result.add(getEntityFromResultSet(resultSet));
+                while (resultSet.next()) {
+                    Goods foundGoods = getEntityFromResultSet(resultSet);
+                    foundGoods.setCharacteristics(getGoodsCharacteristics(foundGoods.getId()));
+                    result.add(foundGoods);
+                }
             }
             LOGGER.info("All employees found successfully{}", result);
         } catch (Exception e) {
@@ -188,10 +192,12 @@ public class H2GoodsDao extends AbstractH2Dao implements GoodsDao {
     public Goods getEntityFromResultSet(ResultSet resultSet) throws DaoException {
 
         H2ImageDao imageDao = daoManager.getImageDao();
+//        H2GoodsCharacteristicsDao goodsCharacteristicDao = daoManager.getGoodsCharacteristicDao();
 
         Goods goods = new Goods();
         try {
             goods.setId(resultSet.getInt("id"));
+            goods.setCharacteristics(null);
             goods.setGoodsName(UTIL_DAO.getString(resultSet.getString("goods_name")));
             goods.setPrice(resultSet.getBigDecimal("price"));
             goods.setImage(imageDao.findById(resultSet.getInt("image")));
@@ -204,14 +210,22 @@ public class H2GoodsDao extends AbstractH2Dao implements GoodsDao {
         return goods;
     }
 
+    public List<GoodsCharacteristic> getGoodsCharacteristics(int id){
+        H2GoodsCharacteristicsDao goodsCharacteristicDao = daoManager.getGoodsCharacteristicDao();
+        return goodsCharacteristicDao.findByGoodsId(id);
+    }
+
     @Override
     public List<Goods> findAll() {
         String sql = "SELECT * FROM GOODS";
         List<Goods> goods = new ArrayList<>();
         try (PreparedStatement prstm = conn.prepareStatement(sql)){
             try(ResultSet resultSet = prstm.executeQuery()){
-                while (resultSet.next())
-                    goods.add(getEntityFromResultSet(resultSet));
+                while (resultSet.next()) {
+                    Goods foundGoods = getEntityFromResultSet(resultSet);
+                    foundGoods.setCharacteristics(getGoodsCharacteristics(foundGoods.getId()));
+                    goods.add(foundGoods);
+                }
             }
             LOGGER.info("All goods found successfully{}", goods);
         } catch (Exception e) {
@@ -220,46 +234,4 @@ public class H2GoodsDao extends AbstractH2Dao implements GoodsDao {
         }
         return goods;
     }
-
-//    @Override
-//    public String getFindByParameters(Boolean needAditionalColumns) {
-//
-//        String columns = NECESSARY_COLUMNS;
-//
-//        if (needAditionalColumns == true){
-//            columns = columns + ADDITIONAL_COLUMNS;
-//        }
-//
-//        String result = String.format(FIND_BY_PARAMETERS_WITHOUT_COLUMNS,columns);
-//
-//        result = String.format(result+"%s", ORDER_BY);
-//        result = String.format(result+"%s", LIMIT_OFFSET);
-//
-//        return result;
-//    }
-//
-//    @Override
-//    public String getFindByParametersWithoutColumns() {
-//        return FIND_BY_PARAMETERS_WITHOUT_COLUMNS;
-//    }
-//
-//    @Override
-//    public String getNecessaryColumns() {
-//        return NECESSARY_COLUMNS;
-//    }
-//
-//    @Override
-//    public String getAdditionalColumns() {
-//        return ADDITIONAL_COLUMNS;
-//    }
-//
-//    @Override
-//    public String getIdField() {
-//        return ID_FIELD;
-//    }
-//
-//    @Override
-//    public String getOrderBy() {
-//        return ORDER_BY;
-//    }
 }
