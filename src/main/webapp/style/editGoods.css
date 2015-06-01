@@ -52,6 +52,11 @@
     margin: 10px;
 }
 
+.checkbox input[type="text"]{
+    display: none;
+}
+
 .checkbox label{
     margin: 10px;
 }
+
