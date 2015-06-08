@@ -52,8 +52,11 @@
     margin: 10px;
 }
 
-.checkbox input[type="text"]{
-    display: none;
+.hide-checkbox-input{
+     display: none;
+}
+
+.show-if-checked{
 }
 
 .checkbox label{

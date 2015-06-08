@@ -56,10 +56,10 @@
                 <c:forEach items="${characteristics}" var="characteristic">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox"> ${characteristic.getCharacteristicName()}
+                            <input type="checkbox" <c:if test="${not empty editGoods.haveCharacteristic(characteristic.getCharacteristicName())}">checked</c:if>> ${characteristic.getCharacteristicName()}
                         </label>
                         <input id="${characteristic.getId()}" name="Char${characteristic.getCharacteristicName()}" type="text"
-                               class="form-control edit-field"
+                               class="form-control <c:if test="${not empty editGoods.haveCharacteristic(characteristic.getCharacteristicName())}">show-if-checked</c:if>"
                                 <c:if test="${not empty editGoods.haveCharacteristic(characteristic.getCharacteristicName())}">
                                     value="${editGoods.haveCharacteristic(characteristic.getCharacteristicName()).getCaracteristicDescription()}"
                                 </c:if>/>

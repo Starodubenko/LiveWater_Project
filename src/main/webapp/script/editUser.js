@@ -1,3 +1,15 @@
+$(function(){
+    var inputs = $($('.checkbox  input[type="text"]'));
+
+    inputs.each(function(){
+        if ($(this).hasClass('show-if-checked')){
+            $(this).css('display', '')
+        } else {
+            $(this).css('display', 'none')
+        }
+    });
+});
+
 $(document).ready(function () {
 
     $("#updatePasswordForm").on("click", "#updatePassword", function () {
@@ -212,4 +224,17 @@ $(document).ready(function () {
             }
         });
     });
+
+    $('.checkbox').on('click', 'input[type=checkbox]', function(){
+        var checkButton = this;
+        if(!checkButton.checked) {
+            $($(($($(this).get(0)).parents(0).get(1)).children).get(1)).slideUp(300);
+        } else {
+            $($(($($(this).get(0)).parents(0).get(1)).children).get(1)).slideDown(300);
+        }
+        //$($(($($(this).get(0)).parents(0).get(1)).children).get(1)).slideUp(300);
+        //$('.checkbox input[type="text"]')slideUp(300);
+    });
+
+
 });
