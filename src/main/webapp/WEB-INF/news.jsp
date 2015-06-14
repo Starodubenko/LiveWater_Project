@@ -13,16 +13,22 @@
     <t:gbody>
         <h1 class="news-header">Новости</h1>
 
-        <a class="add-article-ref" href="/LiveWater/do/article">Добавить</a>
+        <c:if test="${not empty user and user.role.positionName == 'Admin'}">
+            <a class="add-article-ref" href="/LiveWater/do/article?addNews=ok">Добавить</a>
+        </c:if>
 
         <c:forEach var="article" items="${articles}">
             <div class="news-block panel panel-default">
-                <div class="news-block-header text-center">
+                <div class="news-block-header text-center" style="float: left; width: 85%;">
                     ${article.title}
                 </div>
+                <div class="news-block-header text-center" style="float: left; margin-left: 5px; width: 14%;">
+                        ${article.getFormatedDate()}
+                </div>
+                <div class="clear"></div>
                 <hr class="hr-header">
                 <div class="news-block-content panel panel-default">
-                    ${article.getShortText()} <c:if test="${article.getText().length() > 300}">...</c:if>
+                    ${article.getShortText()} <c:if test="${article.getContent().length() > 300}">...</c:if>
                 </div>
                 <a class="news-article-link" href="/LiveWater/do/article?artId=${article.getId()}">Статья</a>
 

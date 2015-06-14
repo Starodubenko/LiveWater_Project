@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface GoodsCharacteristicsDao extends Dao<GoodsCharacteristic> {
     List<GoodsCharacteristic> findByGoodsId(int goodsId);
+
+    GoodsCharacteristic findByCharacteristicIdAndGoodsId(int id, int goodsId);
 }

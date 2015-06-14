@@ -58,10 +58,7 @@ public class ChangeEntityAction implements Action {
 
             if (!entityName.equals(request.getSession().getAttribute("entityName"))) request.setAttribute("page", "1");
             if (UTIL_DAO.getString("page", request) == null) request.setAttribute("page", "1");
-//
-//            request.getSession().setAttribute("entityName", entityName);
-//            request.getSession().setAttribute("page", request.getParameter("page"));
-//            request.getSession().setAttribute("rows", request.getParameter("rows"));
+
         } catch (Exception e) {
             throw new ActionException(e);
         }

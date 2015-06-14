@@ -6,6 +6,7 @@ import com.epam.star.action.ActionResult;
 import com.epam.star.action.MappedAction;
 import com.epam.star.dao.H2dao.DaoFactory;
 import com.epam.star.dao.H2dao.DaoManager;
+import com.epam.star.dao.H2dao.H2CharacteristicDao;
 import com.epam.star.dao.util.EntityFromParameters.GetRefFieldOptions;
 import com.epam.star.dao.util.UtilDao;
 
@@ -29,6 +30,7 @@ public class SelectEntityFilter implements Action {
         String entityName = entityNameForJSP.substring(0, entityNameForJSP.length() - 1);
 
         daoManager = DaoFactory.getInstance().getDaoManager();
+        H2CharacteristicDao characteristicDao = daoManager.getCharacteristicDao();
         try{
             Map<String, List> entitysNames = GetRefFieldOptions.getByEntityName(daoManager, entityName);
             if (entitysNames != null)
@@ -41,6 +43,8 @@ public class SelectEntityFilter implements Action {
         } catch (Exception e) {
             throw new ActionException(e);
         }
+
+        request.setAttribute("goodsCharacteristics", characteristicDao.findAll());
         daoManager.closeConnection();
         return entityFilter;
     }

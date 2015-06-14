@@ -5,6 +5,8 @@ import com.epam.star.entity.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import static com.epam.star.action.util.ActionUtil.getImageFromRequestPart;
 
@@ -64,7 +66,28 @@ public class GetEntity {
             return getStatusPayCard(request, daoManager);
         }
 
+        if (entityName.toLowerCase().equals("article")){
+            return getArticle(request);
+        }
+
         return null;
+    }
+
+    private static Article getArticle(HttpServletRequest request) {
+        Article article = new Article();
+
+        if (!request.getParameter("title").isEmpty())
+        article.setTitle(request.getParameter("title"));
+        if (!request.getParameter("newsDate").isEmpty())
+            try {
+                article.setNewsDate(new SimpleDateFormat("dd.MM.yyyy").parse(request.getParameter("newsDate")));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        if (!request.getParameter("content").isEmpty())
+            article.setContent(request.getParameter("content"));
+
+        return article;
     }
 
     private static AbstractEntity getStatusPayCard(HttpServletRequest request, DaoManager daoManager) {

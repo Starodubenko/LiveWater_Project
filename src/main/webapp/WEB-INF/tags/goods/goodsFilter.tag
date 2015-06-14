@@ -9,7 +9,7 @@
             <div class="center"><label for="goods_name"><fmt:message key="message.case.name"/></label></div>
             <input id="goods_name" name="goods_name" type="text" class="form-control edit-field filter-entity-field"/>
 
-            <div class="center"><label for="price"><fmt:message key="discount.message.percentage"/></label></div>
+            <div class="center"><label for="price"><fmt:message key="goods.message.price"/></label></div>
             <input id="price" name="price" type="text" class="form-control edit-field filter-entity-field"/>
 
             <div class="center"><label for="deleted"><fmt:message key="message.deleted"/></label></div>

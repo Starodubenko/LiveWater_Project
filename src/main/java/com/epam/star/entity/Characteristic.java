@@ -1,14 +1,14 @@
 package com.epam.star.entity;
 
 public class Characteristic extends AbstractEntity {
-    private String CharacteristicName;
+    private String characteristicName;
 
     public String getCharacteristicName() {
-        return CharacteristicName;
+        return characteristicName;
     }
 
     public void setCharacteristicName(String characteristicName) {
-        CharacteristicName = characteristicName;
+        this.characteristicName = characteristicName;
     }
 
     @Override

@@ -128,6 +128,10 @@ public class DaoManager implements AutoCloseable {
         return new H2GoodsCharacteristicsDao(connection,this);
     }
 
+    public H2AboutUsDao getAboutUsDao() {
+        return new H2AboutUsDao(connection,this);
+    }
+
     public H2CharacteristicDao getCharacteristicDao() {
         return new H2CharacteristicDao(connection,this);
     }

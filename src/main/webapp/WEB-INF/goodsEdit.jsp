@@ -17,7 +17,9 @@
     <t:gbody>
         <c:if test="${empty user}"><c:redirect url="/do/welcome"/></c:if>
 
-        <label class="block-title"><fmt:message key="message.addOrEditGoods"/></label>
+        <div class="block-title">
+            <label><fmt:message key="message.addOrEditGoods"/></label>
+        </div>
 
         <form id="goods-form" method="post" enctype="multipart/form-data" onsubmit="return false;">
             <input type="hidden" id="id" value="${editGoods.getId()}">

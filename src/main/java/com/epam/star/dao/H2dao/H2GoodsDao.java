@@ -16,23 +16,13 @@ import java.util.List;
 @MappedDao("Goods")
 public class H2GoodsDao extends AbstractH2Dao implements GoodsDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(H2ClientDao.class);
+
     private static final String ADD_GOODS = "INSERT INTO GOODS VALUES (?, ?, ?, ?, ?)";
     private static final String FULL_DELETE_GOODS = "DELETE FROM GOODS WHERE ID = ?";
     private static final String DELETE_GOODS = "UPDATE GOODS SET DELETED = ? WHERE ID = ?";
     private static final String UPDATE_GOODS = "UPDATE GOODS SET ID = ?, GOODS_NAME = ?, PRICE = ?, IMAGE = ?, DELETED = ? WHERE ID = ?";
 
-    private static final String NECESSARY_COLUMNS =
-            " GOODS.ID, GOODS.GOODS_NAME, GOODS.PRICE";
 
-    private static final String ADDITIONAL_COLUMNS =
-            " ,GOODS.IMAGE, GOODS.DELETED";
-
-    private static final String FIND_BY_PARAMETERS_WITHOUT_COLUMNS =
-            " SELECT %s FROM GOODS";
-
-    private static final String ID_FIELD = " GOODS.ID, ";
-
-    private static final String ORDER_BY = " ORDER BY PRICE ";
     private static final String TABLE = "GOODS";
     private static final String IMPORTANT_FILTER = "";
 

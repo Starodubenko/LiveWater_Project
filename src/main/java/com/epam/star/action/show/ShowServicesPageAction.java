@@ -6,10 +6,12 @@ import com.epam.star.action.ActionResult;
 import com.epam.star.action.MappedAction;
 import com.epam.star.dao.H2dao.DaoFactory;
 import com.epam.star.dao.H2dao.DaoManager;
+import com.epam.star.dao.H2dao.H2CharacteristicDao;
 import com.epam.star.dao.H2dao.H2GoodsDao;
 import com.epam.star.dao.util.PaginatedList;
 import com.epam.star.dao.util.Pagination;
 import com.epam.star.entity.Cart;
+import com.epam.star.entity.Characteristic;
 import com.epam.star.entity.Goods;
 import com.epam.star.entity.Order2;
 import org.slf4j.Logger;
@@ -17,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
+import java.util.List;
 
 @MappedAction("GET/services")
 public class ShowServicesPageAction implements Action {
@@ -47,9 +50,7 @@ public class ShowServicesPageAction implements Action {
         }
 
         request.setAttribute("paginatedList", goods);
-
         daoManager.closeConnection();
-
         return services;
     }
 }

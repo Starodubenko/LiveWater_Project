@@ -18,7 +18,7 @@ public class H2GoodsCharacteristicsDao extends AbstractH2Dao implements GoodsCha
 
     private static final Logger LOGGER = LoggerFactory.getLogger(H2ClientDao.class);
     private static final String ADD_GOODS_CHARACTERISTIC = "INSERT INTO GOODS_CHARACTERISTICS VALUES (?, ?, ?, ?)";
-    private static final String FULL_DELETE_GOODS = "DELETE FROM GOODS_CHARACTERISTICS WHERE ID = ?";
+    private static final String FULL_DELETE_GOODS_CHARACTERISTIC = "DELETE FROM GOODS_CHARACTERISTICS WHERE ID = ?";
     private static final String DELETE_GOODS_CHARACTERISTIC = "UPDATE GOODS_CHARACTERISTICS SET DELETED = ? WHERE ID = ?";
     private static final String UPDATE_GOODS_CHARACTERISTIC = "UPDATE GOODS_CHARACTERISTICS SET ID = ?, GOODS_ID = ?, CHARACTERISTIC_ID = ?, DESCRIPTION = ? WHERE ID = ?";
 
@@ -81,9 +81,8 @@ public class H2GoodsCharacteristicsDao extends AbstractH2Dao implements GoodsCha
     public String deleteEntity(int ID) {
         String status = "Goods characteristic do not deleted";
 
-        try (PreparedStatement prstm = conn.prepareStatement(DELETE_GOODS_CHARACTERISTIC)){
-            prstm.setBoolean(1, true);
-            prstm.setInt(2, ID);
+        try (PreparedStatement prstm = conn.prepareStatement(FULL_DELETE_GOODS_CHARACTERISTIC)){
+            prstm.setInt(1, ID);
             prstm.execute();
             status = "Goods characteristic deleted successfully ";
             LOGGER.info("Goods characteristic marked as deleted successfully{}", ID);
@@ -170,5 +169,21 @@ public class H2GoodsCharacteristicsDao extends AbstractH2Dao implements GoodsCha
             throw new DaoException(e);
         }
         return goodsCharacteristics;
+    }
+
+    @Override
+    public GoodsCharacteristic findByCharacteristicIdAndGoodsId(int charId, int goodsId) {
+        String sql = "SELECT * FROM GOODS_CHARACTERISTICS WHERE CHARACTERISTIC_ID = " + charId + " AND GOODS_ID = " + goodsId;
+        try (PreparedStatement prstm = conn.prepareStatement(sql)){
+            try(ResultSet resultSet = prstm.executeQuery()){
+                while (resultSet.next())
+                    return getEntityFromResultSet(resultSet);
+            }
+            LOGGER.info("GoodsCharacteristics by characteristic charId found successfully{}");
+        } catch (Exception e) {
+            LOGGER.error("Error of GoodsCharacteristics finding by characteristic charId ", e);
+            throw new DaoException(e);
+        }
+        return null;
     }
 }

@@ -1,16 +1,28 @@
 package com.epam.star.entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Article extends AbstractEntity {
 
     private String title;
-    private String text;
+    private Date newsDate;
+    private String content;
 
-    public String getText() {
-        return text;
+    public String getContent() {
+        return content;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public Date getNewsDate() {
+        return newsDate;
+    }
+
+    public void setNewsDate(Date newsDate) {
+        this.newsDate = newsDate;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getTitle() {
@@ -22,8 +34,12 @@ public class Article extends AbstractEntity {
     }
 
     public String getShortText(){
-        if (text.length() >= 300)
-        return text.substring(0,300);
-        else return text;
+        if (content.length() >= 300)
+        return content.substring(0,300);
+        else return content;
+    }
+
+    public String getFormatedDate(){
+        return new SimpleDateFormat("dd.MM.yyyy").format(newsDate);
     }
 }

@@ -6,6 +6,8 @@ import com.epam.star.entity.*;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import static com.epam.star.action.util.ActionUtil.getImageFromRequestPart;
 
@@ -65,7 +67,39 @@ public class GetEntityUpdate<T extends AbstractEntity> {
             return getStatusPayCard(request, (StatusPayCard) oldEntity);
         }
 
+        if (entityName.toLowerCase().equals("article")){
+            return getArticle(request, (Article) oldEntity);
+        }
+
+        if (entityName.toLowerCase().equals("about")){
+            return getAbout(request, (AboutUs) oldEntity);
+        }
+
         return null;
+    }
+
+    private AboutUs getAbout(HttpServletRequest request, AboutUs oldEntity) {
+        if (request.getParameter("text") != null && !oldEntity.getText().equals(request.getParameter("text")))
+            oldEntity.setText(request.getParameter("text"));
+        return oldEntity;
+    }
+
+    private Article getArticle(HttpServletRequest request, Article oldEntity) {
+
+        if (request.getParameter("title") != null && !oldEntity.getTitle().equals(request.getParameter("title")))
+            oldEntity.setTitle(request.getParameter("title"));
+        try {
+            if (request.getParameter("newsDate") != null && !oldEntity.getNewsDate().equals(new SimpleDateFormat("dd.MM.yyyy").parse(request.getParameter("newsDate"))))
+                oldEntity.setNewsDate(new SimpleDateFormat("dd.MM.yyyy").parse(request.getParameter("newsDate")));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (request.getParameter("content") != null && !oldEntity.getContent().equals(request.getParameter("content")))
+            oldEntity.setContent(request.getParameter("content"));
+        if (request.getParameter("deleted") != null && oldEntity.isDeleted() != Boolean.valueOf(request.getParameter("deleted")))
+            oldEntity.setDeleted(Boolean.valueOf(request.getParameter("deleted")));
+
+        return oldEntity;
     }
 
     private static AbstractEntity getStatusPayCard(HttpServletRequest request, StatusPayCard oldStatus) {

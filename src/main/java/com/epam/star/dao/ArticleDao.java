@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface ArticleDao extends Dao<Article> {
     List<Article> findLastTenArticles();
+
+    List<Article> findLastTenArticlesForAdmin();
 }

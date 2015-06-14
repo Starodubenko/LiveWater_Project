@@ -31,7 +31,13 @@ public class ShowArticlePageAction implements Action {
             Article art = articleDao.findById(artId);
 
             request.setAttribute("article", art);
+        } else {
+            String addNews = request.getParameter("addNews");
+            if (!addNews.isEmpty())
+                request.setAttribute("addNews", request.getParameter("addNews"));
         }
+
+
 
         daoManager.closeConnection();
         return article;

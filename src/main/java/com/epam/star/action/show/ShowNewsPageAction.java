@@ -7,6 +7,7 @@ import com.epam.star.action.MappedAction;
 import com.epam.star.dao.H2dao.DaoFactory;
 import com.epam.star.dao.H2dao.DaoManager;
 import com.epam.star.dao.H2dao.H2ArticleDao;
+import com.epam.star.entity.Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +27,12 @@ public class ShowNewsPageAction implements Action {
 
         H2ArticleDao articleDao = daoManager.getArticleDao();
 
-        request.setAttribute("articles",articleDao.findLastTenArticles());
+        Client user = (Client) request.getSession().getAttribute("user");
+
+        if (user != null){
+            if (user.getRole().getPositionName().equals("Admin"))
+                request.setAttribute("articles",articleDao.findLastTenArticlesForAdmin());
+        } else request.setAttribute("articles",articleDao.findLastTenArticles());
 
         daoManager.closeConnection();
         return news;

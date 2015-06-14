@@ -1,16 +1,13 @@
 package com.epam.star.dao.H2dao;
 
 import com.epam.star.dao.ArticleDao;
-import com.epam.star.dao.PositionDao;
-import com.epam.star.entity.AbstractEntity;
 import com.epam.star.entity.Article;
-import com.epam.star.entity.Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.UnsupportedEncodingException;
-import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -23,11 +20,12 @@ public class H2ArticleDao extends AbstractH2Dao implements ArticleDao {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(H2ClientDao.class);
 
-    private static final String TABLE = "USERS";
+    private static final String TABLE = "ARTICLES";
     private static final String IMPORTANT_FILTER = "";
-    private static final String ADD_ARTICLE = "";
-    private static final String DELETE_ARTICLE = "";
-    private static final String UPDATE_ARTICLE = "";
+    private static final String ADD_ARTICLE = "INSERT INTO ARTICLES VALUES (?, ?, ?, ?, ?)";
+    private static final String FULL_DELETE_ARTICLE = "DELETE FROM ARTICLES WHERE ID = ?";
+    private static final String DELETE_ARTICLE = "UPDATE ARTICLES SET DELETED = ? WHERE ID = ?";
+    private static final String UPDATE_ARTICLE = "UPDATE ARTICLES SET ID = ?, TITLE = ?, NEWS_DATE = ?, CONTENT = ?, DELETED = ? WHERE ID = ?";
 
 
     protected H2ArticleDao(Connection conn, DaoManager daoManager) {
@@ -64,13 +62,14 @@ public class H2ArticleDao extends AbstractH2Dao implements ArticleDao {
 
     @Override
     public Article insert(Article article) {
-        String status = "Article do not added";
+        String status = "Article was not added";
 
         try (PreparedStatement prstm = conn.prepareStatement(ADD_ARTICLE)) {
             prstm.setString(1, null);
             prstm.setString(2, article.getTitle());
-            prstm.setString(3, article.getText());
+            prstm.setString(3, article.getContent());
             prstm.setBoolean(4, article.isDeleted());
+            prstm.setDate(5, new Date(article.getNewsDate().getTime()));
             prstm.execute();
 
             LOGGER.info("Article added successfully{}", article);
@@ -83,7 +82,7 @@ public class H2ArticleDao extends AbstractH2Dao implements ArticleDao {
 
     @Override
     public String deleteEntity(int ID) {
-        String status = "Article do not deleted";
+        String status = "Article was not deleted";
 
         try (PreparedStatement prstm = conn.prepareStatement(DELETE_ARTICLE)) {
             prstm.setBoolean(1, true);
@@ -105,9 +104,10 @@ public class H2ArticleDao extends AbstractH2Dao implements ArticleDao {
         try (PreparedStatement prstm = conn.prepareStatement(UPDATE_ARTICLE)) {
             prstm.setInt(1, article.getId());
             prstm.setString(2, article.getTitle());
-            prstm.setString(3, article.getText());
-            prstm.setBoolean(14, article.isDeleted());
-            prstm.setInt(15, article.getId());
+            prstm.setDate(3, new Date(article.getNewsDate().getTime()));
+            prstm.setString(4, article.getContent());
+            prstm.setBoolean(5, article.isDeleted());
+            prstm.setInt(6, article.getId());
             prstm.executeUpdate();
             status = "Article updated successfully";
             LOGGER.info("Article updated successfully{}", article);
@@ -118,35 +118,6 @@ public class H2ArticleDao extends AbstractH2Dao implements ArticleDao {
         return status;
     }
 
-//    @Override
-//    public String getFindByParameters(Boolean needAditionalColumns) {
-//        return null;
-//    }
-//
-//    @Override
-//    public String getFindByParametersWithoutColumns() {
-//        return null;
-//    }
-//
-//    @Override
-//    public String getNecessaryColumns() {
-//        return null;
-//    }
-//
-//    @Override
-//    public String getAdditionalColumns() {
-//        return null;
-//    }
-//
-//    @Override
-//    public String getIdField() {
-//        return null;
-//    }
-//
-//    @Override
-//    public String getOrderBy() {
-//        return null;
-//    }
 
     @Override
     public Article getEntityFromResultSet(ResultSet resultSet) throws DaoException, UnsupportedEncodingException {
@@ -154,7 +125,8 @@ public class H2ArticleDao extends AbstractH2Dao implements ArticleDao {
         try {
             article.setId(resultSet.getInt("id"));
             article.setTitle(resultSet.getString("title"));
-            article.setText(resultSet.getString("text"));
+            article.setNewsDate(resultSet.getDate("news_date"));
+            article.setContent(resultSet.getString("content"));
             LOGGER.info("Article created from resultset successfully{}", article);
         } catch (Exception e) {
             LOGGER.error("Error of Article creating from resultset{}", e);
@@ -182,7 +154,24 @@ public class H2ArticleDao extends AbstractH2Dao implements ArticleDao {
 
     @Override
     public List<Article> findLastTenArticles() {
-        String sql = "SELECT * FROM ARTICLES WHERE DELETED = FALSE LIMIT 10 OFFSET 0";
+        String sql = "SELECT * FROM ARTICLES WHERE DELETED = FALSE AND NEWS_DATE <= sysdate order by NEWS_DATE DESC, ID DESC LIMIT 10 OFFSET 0";
+        List<Article> articles = new ArrayList<>();
+        try (PreparedStatement prstm = conn.prepareStatement(sql)) {
+            try (ResultSet resultSet = prstm.executeQuery()) {
+                while (resultSet.next())
+                    articles.add(getEntityFromResultSet(resultSet));
+            }
+            LOGGER.info("All Articles found successfully{}", articles);
+        } catch (Exception e) {
+            LOGGER.error("Error of Articles finding", e);
+            throw new DaoException(e);
+        }
+        return articles;
+    }
+
+    @Override
+    public List<Article> findLastTenArticlesForAdmin() {
+        String sql = "SELECT * FROM ARTICLES order by NEWS_DATE DESC, ID DESC LIMIT 10 OFFSET 0";
         List<Article> articles = new ArrayList<>();
         try (PreparedStatement prstm = conn.prepareStatement(sql)) {
             try (ResultSet resultSet = prstm.executeQuery()) {

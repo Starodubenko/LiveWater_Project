@@ -29,6 +29,7 @@ public class UpdateGoodsAction implements Action {
         DaoManager daoManager = DaoFactory.getInstance().getDaoManager();
 
         H2GoodsDao goodsDao = daoManager.getGoodsDao();
+        H2GoodsCharacteristicsDao goodsCharacteristicDao = daoManager.getGoodsCharacteristicDao();
 
         Goods entity = goodsDao.findById(Integer.valueOf(request.getParameter("id")));
         Goods newEntity = (Goods) entityForUpdate.getByEntityName(request, daoManager, "goods", entity);
@@ -40,6 +41,8 @@ public class UpdateGoodsAction implements Action {
             daoManager.beginTransaction();
             try {
                 goodsDao.updateEntity(newEntity);
+
+                updateGodsCharacteristicsMap(newEntity, goodsCharacteristicDao);
 
                 daoManager.commit();
                 LOGGER.info("Goods updated successful, {}", newEntity);
@@ -54,11 +57,29 @@ public class UpdateGoodsAction implements Action {
         return message;
     }
 
+    private void updateGodsCharacteristicsMap(Goods goods, H2GoodsCharacteristicsDao goodsCharacteristicsDao) {
+        List<GoodsCharacteristic> characteristics = goods.getCharacteristics();
+
+        for (GoodsCharacteristic characteristic : characteristics) {
+            characteristic.setGoods(goods);
+            GoodsCharacteristic foundGoodsCharacteristic = goodsCharacteristicsDao.findByCharacteristicIdAndGoodsId(characteristic.getCharacteristic().getId(), goods.getId());
+            if (foundGoodsCharacteristic != null &&
+                    characteristic.getCaracteristicDescription().isEmpty())
+                goodsCharacteristicsDao.deleteEntity(foundGoodsCharacteristic.getId());
+            else
+            if (foundGoodsCharacteristic != null &&
+                    !foundGoodsCharacteristic.getCaracteristicDescription().equals(characteristic.getCaracteristicDescription()))
+                goodsCharacteristicsDao.updateEntity(characteristic);
+            else if (foundGoodsCharacteristic == null && !characteristic.getCaracteristicDescription().isEmpty())
+                goodsCharacteristicsDao.insert(characteristic);
+        }
+
+    }
+
     private List<GoodsCharacteristic> getCharacteristicsFromView(HttpServletRequest request, DaoManager daoManager){
         List<GoodsCharacteristic> characteristics = new ArrayList<>();
 
         H2CharacteristicDao characteristicDao = daoManager.getCharacteristicDao();
-        H2GoodsCharacteristicsDao goodsCharacteristicDao = daoManager.getGoodsCharacteristicDao();
 
         Map<String, String[]> parameterMap = request.getParameterMap();
 
@@ -70,7 +91,6 @@ public class UpdateGoodsAction implements Action {
                 characteristics.add(goodsCharacteristic);
             }
         }
-
-        return null;
+        return characteristics;
     }
 }
