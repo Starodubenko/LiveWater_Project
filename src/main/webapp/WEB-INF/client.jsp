@@ -25,6 +25,15 @@
             <a href="<c:url value="/do/editProfile"/>"><fmt:message key="client.edit.profile"/></a>
         </div>
 
+        <div style="margin: 10px; font-size: 20px">
+            <div >
+                <label>Пользователь : ${user.lastName} ${user.firstName} ${user.middleName} </label>
+            </div>
+            <div>
+                <label>Скидка : ${user.discount.percentage}</label>
+            </div>
+        </div>
+
         <div class="order-successful-message panel panel-default"
              <c:if test="${orderSuccessful ne 'ok'}">style="display: none"</c:if>>
             <div>Ваш заказ №${orderNumber} создан, ожидайте подтвеждения от диспетчера.</div>

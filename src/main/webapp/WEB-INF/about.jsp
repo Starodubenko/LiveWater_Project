@@ -20,7 +20,7 @@
                 <br>
 
                 <div style="float: right">
-                    <button id="edit">Редактировать</button>
+                    <button id="edit"><fmt:message key="message.about.edit"/></button>
                 </div>
             </c:if>
         </div>
@@ -36,8 +36,8 @@
             </textarea>
 
                 </form>
-                <button id="save">Сохранить</button>
-                <button id="cancel">Отмена</button>
+                <button id="save"><fmt:message key="message.about.save"/></button>
+                <button id="cancel"><fmt:message key="message.about.cancel"/></button>
             </div>
         </c:if>
 

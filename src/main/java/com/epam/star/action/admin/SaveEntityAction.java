@@ -29,9 +29,10 @@ public class SaveEntityAction implements Action {
 
         try (DaoManager daoManager = DaoFactory.getInstance().getDaoManager()) {
             String entityName = UTIL_DAO.getString("entityName",request);
+            String normalEntityName = entityName.substring(0,entityName.length()-1);
 
-            Dao dao = daoManager.getDao(entityName);
-            AbstractEntity entity = GetEntity.getByEntityName(request, daoManager, entityName);
+            Dao dao = daoManager.getDao(normalEntityName);
+            AbstractEntity entity = GetEntity.getByEntityName(request, daoManager, normalEntityName);
             try {
                 daoManager.beginTransaction();
                 dao.insert(entity);

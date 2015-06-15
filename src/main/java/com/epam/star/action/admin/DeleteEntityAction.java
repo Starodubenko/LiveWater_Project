@@ -38,7 +38,7 @@ public class DeleteEntityAction implements Action {
                 daoManager.beginTransaction();
                 dao.deleteEntity(id);
 
-                LOGGER.error("Delete entity was successful{}", entity);
+                LOGGER.info("Delete entity was successful{}", entity);
                 daoManager.commit();
             } catch (Exception e) {
                 LOGGER.error("During deleting an entity an error was occurred{}", entity);

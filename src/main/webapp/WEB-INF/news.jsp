@@ -11,10 +11,10 @@
         <link rel="stylesheet" href="<c:url value="/style/news.css"/>">
     </t:gHead>
     <t:gbody>
-        <h1 class="news-header">Новости</h1>
+        <h1 class="news-header"><fmt:message key="navigation.news"/></h1>
 
         <c:if test="${not empty user and user.role.positionName == 'Admin'}">
-            <a class="add-article-ref" href="/LiveWater/do/article?addNews=ok">Добавить</a>
+            <a class="add-article-ref" href="/LiveWater/do/article?addNews=ok"><fmt:message key="message.news.add"/></a>
         </c:if>
 
         <c:forEach var="article" items="${articles}">
@@ -30,7 +30,7 @@
                 <div class="news-block-content panel panel-default">
                     ${article.getShortText()} <c:if test="${article.getContent().length() > 300}">...</c:if>
                 </div>
-                <a class="news-article-link" href="/LiveWater/do/article?artId=${article.getId()}">Статья</a>
+                <a class="news-article-link" href="/LiveWater/do/article?artId=${article.getId()}"><fmt:message key="message.news.view"/></a>
 
                 <div class="clear"></div>
             </div>

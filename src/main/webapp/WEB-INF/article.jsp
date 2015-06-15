@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="<c:url value="/style/news.css"/>">
     </t:gHead>
     <t:gbody>
-        <h1 class="news-header">Новости</h1>
+        <h1 class="news-header"><fmt:message key="navigation.news"/></h1>
 
         <form class="news-block panel panel-default">
             <input type="hidden" name="artId" value="${article.id}">
@@ -54,11 +54,11 @@
 
         <c:if test="${not empty user and user.role.positionName == 'Admin'}">
             <div class="article-operations">
-                <button id="edit">Исправить</button>
-                <button id="save">Сохраниь</button>
-                <button id="add">Добавить</button>
-                <button id="cancel">Отменить</button>
-                <button id="remove">Удалить</button>
+                <button id="edit"><fmt:message key="message.news.edit"/></button>
+                <button id="save"><fmt:message key="message.news.save"/></button>
+                <button id="add"><fmt:message key="message.news.add"/></button>
+                <button id="cancel"><fmt:message key="message.news.cancel"/></button>
+                <button id="remove"><fmt:message key="message.news.remove"/></button>
             </div>
         </c:if>
 

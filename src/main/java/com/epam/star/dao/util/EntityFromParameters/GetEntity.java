@@ -5,6 +5,7 @@ import com.epam.star.entity.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -90,20 +91,59 @@ public class GetEntity {
         return article;
     }
 
+    //todo finish writing
     private static AbstractEntity getStatusPayCard(HttpServletRequest request, DaoManager daoManager) {
-        return null;
+        StatusPayCard payCard = new StatusPayCard();
+
+        if (!request.getParameter("status_name").isEmpty())
+            payCard.setStatusName(request.getParameter("status_name"));
+        if (request.getParameter("deleted") != null) {
+            if (request.getParameter("deleted").equals("on")) payCard.setDeleted(true);
+            else payCard.setDeleted(false);
+        }
+
+        return payCard;
     }
 
     private static AbstractEntity getOrderStatus(HttpServletRequest request, DaoManager daoManager) {
-        return null;
+        Status orderStatus = new Status();
+
+        if (!request.getParameter("status_name").isEmpty())
+            orderStatus.setStatusName(request.getParameter("status_name"));
+        if (request.getParameter("deleted") != null) {
+            if (request.getParameter("deleted").equals("on")) orderStatus.setDeleted(true);
+            else orderStatus.setDeleted(false);
+        }
+
+        return orderStatus;
     }
 
     private static AbstractEntity getPosition(HttpServletRequest request, DaoManager daoManager) {
-        return null;
+        Position position = new Position();
+
+        if (!request.getParameter("position_name").isEmpty())
+            position.setPositionName(request.getParameter("position_name"));
+        if (request.getParameter("deleted") != null) {
+            if (request.getParameter("deleted").equals("on")) position.setDeleted(true);
+            else position.setDeleted(false);
+        }
+
+        return position;
     }
 
     private static AbstractEntity getPeriod(HttpServletRequest request, DaoManager daoManager) {
-        return null;
+        Period period = new Period();
+
+        if (!request.getParameter("period").isEmpty())
+            period.setPeriod(Time.valueOf(request.getParameter("period")));
+        if (!request.getParameter("describe").isEmpty())
+            period.setPeriod(Time.valueOf(request.getParameter("describe")));
+        if (request.getParameter("deleted") != null) {
+            if (request.getParameter("deleted").equals("on")) period.setDeleted(true);
+            else period.setDeleted(false);
+        }
+
+        return period;
     }
 
     private static AbstractEntity getOrderedGoods(HttpServletRequest request, DaoManager daoManager) {
@@ -116,8 +156,10 @@ public class GetEntity {
 
     private static Image getImage(HttpServletRequest request, DaoManager daoManager) {
         Image image = getImageFromRequestPart(request, "filename");
-        if (request.getParameter("deleted").equals("on")) image.setDeleted(true);
-        else image.setDeleted(false);
+        if (request.getParameter("deleted") != null) {
+            if (request.getParameter("deleted").equals("on")) image.setDeleted(true);
+            else image.setDeleted(false);
+        }
         return image;
     }
 
@@ -131,8 +173,10 @@ public class GetEntity {
             goods.setGoodsName(request.getParameter("goodsname"));
         if (request.getParameter("price") != null)
             goods.setPrice(new BigDecimal(request.getParameter("price")));
-        if (request.getParameter("deleted") != null)
-            goods.setDeleted(Boolean.valueOf(request.getParameter("deleted")));
+        if (request.getParameter("deleted") != null) {
+            if (request.getParameter("deleted") != null)
+                goods.setDeleted(Boolean.valueOf(request.getParameter("deleted")));
+        }
 
         return goods;
     }
@@ -161,13 +205,15 @@ public class GetEntity {
         client.setVirtualBalance(new BigDecimal(request.getParameter("virtual_balance")));
         client.setAvatar(Integer.valueOf(request.getParameter("avatar")));
         client.setDiscount(discountDao.findById(Integer.valueOf(request.getParameter("discount"))));
-        if (request.getParameter("deleted").equals("on")) client.setDeleted(true);
-        else client.setDeleted(false);
+        if (request.getParameter("deleted") != null) {
+            if (request.getParameter("deleted").equals("on")) client.setDeleted(true);
+            else client.setDeleted(false);
+        }
 
         return client;
     }
 
-    private static Employee getEmployee(HttpServletRequest request, DaoManager daoManager){
+    private static Employee getEmployee(HttpServletRequest request, DaoManager daoManager) {
 
         H2PositionDao positionDao = daoManager.getPositionDao();
         H2ImageDao imageDao = daoManager.getImageDao();
@@ -191,23 +237,25 @@ public class GetEntity {
         employee.setVirtualBalance(new BigDecimal(request.getParameter("virtual_balance")));
         employee.setAvatar(Integer.valueOf(request.getParameter("avatar")));
         employee.setDiscount(discountDao.findById(Integer.valueOf(request.getParameter("discount"))));
-        if (request.getParameter("deleted").equals("on")) employee.setDeleted(true);
-        else employee.setDeleted(false);
+        if (request.getParameter("deleted") != null) {
+            if (request.getParameter("deleted").equals("on")) employee.setDeleted(true);
+            else employee.setDeleted(false);
+        }
 
         return employee;
     }
 
     private static Contact getContact(HttpServletRequest request, DaoManager daoManager){
-
-        H2PayCardStatusDao payCardStatusDao = daoManager.getPayCardStatusDao();
-
         Contact contact = new Contact();
 
         contact.setTelephone(request.getParameter("telephone"));
         contact.setOwner(request.getParameter("owner"));
         contact.setPart(request.getParameter("part"));
-        if (request.getParameter("deleted").equals("on")) contact.setDeleted(true);
-        else contact.setDeleted(false);
+
+        if (request.getParameter("deleted") != null) {
+            if (request.getParameter("deleted").equals("on")) contact.setDeleted(true);
+            else contact.setDeleted(false);
+        }
 
         return contact;
     }
@@ -224,8 +272,10 @@ public class GetEntity {
         payCard.setBalance(new BigDecimal(request.getParameter("balance")));
         if (request.getParameter("not activated") == null) payCard.setStatusPayCard(payCardStatusDao.findByStatusName("not activated"));
         else payCard.setStatusPayCard(payCardStatusDao.findByStatusName(request.getParameter("status_name")));
-        if (request.getParameter("deleted") == null) payCard.setDeleted(false);
-        else payCard.setDeleted(true);
+        if (request.getParameter("deleted") != null) {
+            if (request.getParameter("deleted") == null) payCard.setDeleted(false);
+            else payCard.setDeleted(true);
+        }
 
         return payCard;
     }

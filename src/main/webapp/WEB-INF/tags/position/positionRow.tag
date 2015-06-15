@@ -38,7 +38,7 @@
     <form id="saveForm">
         <tr>
             <td class="id"></td>
-            <td><input name="position" type="text" class="form-control edit-field" style="display: none;"/></td>
+            <td><input name="position_name" type="text" class="form-control edit-field" style="display: none;"/></td>
             <td></td>
             <td>
                 <button type="button" class="btn btn-primary" id="add"><fmt:message key="button.add"/>

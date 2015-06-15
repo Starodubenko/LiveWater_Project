@@ -1,9 +1,5 @@
-$('#datepickerLog').datepicker({
-
-});
-$('#datepickerReport').datepicker({
-
-});
+$('#datepickerLog').datepicker({});
+$('#datepickerReport').datepicker({});
 
 $("#entityName").html($("#entityName option").sort(function (a, b) {
     return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
@@ -15,7 +11,7 @@ var orderBy;
 var entityName;
 var filterForm;
 
-function getAdditionalParameters(){
+function getAdditionalParameters() {
     var e = document.getElementById("entityName");
     entityName = e.options[e.selectedIndex].value;
     page = $('#pageNumber').val();
@@ -25,11 +21,11 @@ function getAdditionalParameters(){
     var by = $('#orderBy')[0];
     var type = $('#orderByType')[0];
     if (by.options[by.selectedIndex].value != "")
-        orderBy = by.options[by.selectedIndex].value + " " +type.options[type.selectedIndex].value;
+        orderBy = by.options[by.selectedIndex].value + " " + type.options[type.selectedIndex].value;
     else orderBy = "";
 }
 
-function changeEntityName(needFilter){
+function changeEntityName(needFilter) {
 
     getAdditionalParameters();
 
@@ -38,8 +34,8 @@ function changeEntityName(needFilter){
             $('#orderBy').html(data);
         });                      ////////////////
     var actionRow = "changeEntity";
-    if(needFilter) actionRow = actionRow + "?" + filterForm;
-                                /////////////////
+    if (needFilter) actionRow = actionRow + "?" + filterForm;
+    /////////////////
 
     $.get("changeEntity", {entityName: entityName, page: page, rows: rows, orderBy: orderBy},
         function (data) {
@@ -76,29 +72,29 @@ $(document).ready(function () {
                 labels[i].style.display = visLabel;
                 editField.get(0).style.width = width;
                 editField.get(0).style.display = visText;
-                if (!this.checked){
+                if (!this.checked) {
                     var value = editField.val();
                     $(labels[i]).text(value);
                 }
             }
         }
 
-        if (!this.checked){
+        if (!this.checked) {
             var fields = $(this).closest('tr').find('[name]').serialize();
             var id = $(this).closest('tr').children('td').children('button').val();
 
             getAdditionalParameters();
-            $.post("update-entity?"+fields,
+            $.post("update-entity?" + fields,
                 {
-                    id:id,
-                    entityName:entityName
+                    id: id,
+                    entityName: entityName
                 },
                 function (data) {
                 })
         }
     });
 
-    $('.table-data-base').on('click', '.edit-field[type="checkbox"]', function(){
+    $('.table-data-base').on('click', '.edit-field[type="checkbox"]', function () {
         $(this).val($(this).prop('checked'));
     });
 
@@ -107,10 +103,10 @@ $(document).ready(function () {
 
         getAdditionalParameters();
 
-        $.get("changeEntity?"+filterForm,
+        $.get("changeEntity?" + filterForm,
             {
-                entityName:entityName,
-                rows:rows,
+                entityName: entityName,
+                rows: rows,
                 orderBy: orderBy
             },
             function (data) {
@@ -124,10 +120,10 @@ $(document).ready(function () {
 
         getAdditionalParameters();
 
-        $.get("changeEntity?"+filterForm,
+        $.get("changeEntity?" + filterForm,
             {
-                entityName:entityName,
-                rows:rows,
+                entityName: entityName,
+                rows: rows,
                 orderBy: orderBy
             },
             function (data) {
@@ -140,10 +136,10 @@ $(document).ready(function () {
 
         getAdditionalParameters();
 
-        $.get("changeEntity?"+filterForm,
+        $.get("changeEntity?" + filterForm,
             {
-                entityName:entityName,
-                rows:rows,
+                entityName: entityName,
+                rows: rows,
                 orderBy: orderBy
             },
             function (data) {
@@ -154,10 +150,10 @@ $(document).ready(function () {
     $('#orderBy').change(function () {
         getAdditionalParameters();
 
-        $.get("changeEntity?"+filterForm,
+        $.get("changeEntity?" + filterForm,
             {
-                entityName:entityName,
-                rows:rows,
+                entityName: entityName,
+                rows: rows,
                 orderBy: orderBy
             },
             function (data) {
@@ -167,10 +163,10 @@ $(document).ready(function () {
     $('#orderByType').change(function () {
         getAdditionalParameters();
 
-        $.get("changeEntity?"+filterForm,
+        $.get("changeEntity?" + filterForm,
             {
-                entityName:entityName,
-                rows:rows,
+                entityName: entityName,
+                rows: rows,
                 orderBy: orderBy
             },
             function (data) {
@@ -228,6 +224,7 @@ $(document).ready(function () {
         field = {name: "rows", value: rows};
         Data.push(field);
 
+        if ($("#filename").size() > 0)
         formData.append("filename", $("#filename")[0].files[0]);
         formData.append("entityName", entityName);
 
@@ -302,7 +299,7 @@ $(document).ready(function () {
         $('.numbered').removeClass("active");
         $("li.numbered[value=" + page + "]").addClass("active");
 
-        $.get("changeEntity?"+filterForm,
+        $.get("changeEntity?" + filterForm,
             {
                 page: page,
                 rows: rows,
@@ -322,7 +319,7 @@ $(document).ready(function () {
         $(this).addClass("active");
         page = $(this).attr('value');
         backNext(page);
-        $.get("changeEntity?"+filterForm,
+        $.get("changeEntity?" + filterForm,
             {
                 page: page,
                 rows: rows,
@@ -344,7 +341,7 @@ $(document).ready(function () {
         $('.numbered').removeClass("active");
         $("li.numbered[value=" + page + "]").addClass("active");
 
-        $.get("changeEntity?"+filterForm,
+        $.get("changeEntity?" + filterForm,
             {
                 page: page,
                 rows: rows,
